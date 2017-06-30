@@ -8,48 +8,22 @@ public class LinkedList {
     // order and each of their nodes contain a single digit. Add the two numbers and return it as a linked list.
     // You may assume the two numbers do not contain any leading zero, except the number 0 itself.
     public static ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-        return addNodes(l1, l2, false);
-    }
-
-    private static ListNode addNodes(ListNode l1, ListNode l2, boolean carryOver) {
-        if (l1 == null && l2 == null) {
-            if (carryOver) {
-                return new ListNode(1);
-            }
-            return null;
+        ListNode tempHead = new ListNode(0);
+        ListNode i = l1, j = l2, currNode = tempHead;
+        int carry = 0;
+        while (i != null || j != null) {
+            int x = (i != null) ? i.val : 0;
+            int y = (j != null) ? j.val : 0;
+            int sum = x + y + carry;
+            carry = sum / 10;
+            currNode.next = new ListNode(sum % 10);
+            currNode = currNode.next;
+            if ( i != null) i = i.next;
+            if ( j != null) j = j.next;
         }
-        if (l1 == null) {
-            int result = l2.val  + (carryOver ? 1 : 0);
-            if (result >= 10) {
-                result %= 10;
-                carryOver = true;
-            } else {
-                carryOver = false;
-            }
-            l2.val = result;
-            l2.next = addNodes(null, l2.next, carryOver);
-            return l2;
+        if (carry > 0) {
+            currNode.next = new ListNode(carry);
         }
-        if (l2 == null) {
-            int result = l1.val  + (carryOver ? 1 : 0);
-            if (result >= 10) {
-                result %= 10;
-                carryOver = true;
-            } else {
-                carryOver = false;
-            }
-            l1.val = result;
-            l1.next = addNodes(l1.next, null, carryOver);
-            return l1;
-        }
-        l1.val = l1.val + l2.val + (carryOver ? 1 : 0);
-        if (l1.val >= 10) {
-            l1.val %= 10;
-            carryOver = true;
-        } else {
-            carryOver = false;
-        }
-        l1.next = addNodes(l1.next, l2.next, carryOver);
-        return l1;
+        return tempHead.next;
     }
 }
