@@ -17,4 +17,16 @@ public class AlgorithmsTest {
         target = 6;
         Assert.assertArrayEquals(new int[]{1, 2}, Algorithms.twoSum(given, target));
     }
+
+    @Test
+    public void TestTwoSumII() {
+        //Case 1
+        int[] given = new int[]{2, 7, 11, 15};
+        int target = 9;
+        Assert.assertArrayEquals(new int[]{1, 2}, Algorithms.twoSumII(given, target));
+        //Case 2
+        given = new int[]{2, 3, 4};
+        target = 6;
+        Assert.assertArrayEquals(new int[]{1, 3}, Algorithms.twoSumII(given, target));
+    }
 }

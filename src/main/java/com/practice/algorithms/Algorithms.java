@@ -23,4 +23,27 @@ public class Algorithms {
         }
         return null;
     }
+
+    // Two Sum II - Input array is sorted
+    //
+    // Given an array of integers that is already sorted in ascending order, find two numbers such that they add up to a
+    // specific target number.
+    // The function twoSum should return indices of the two numbers such that they add up to the target, where index1
+    // must be less than index2. Please note that your returned answers (both index1 and index2) are not zero-based.
+    // You may assume that each input would have exactly one solution and you may not use the same element twice.    //
+    public static int[] twoSumII(int[] nums, int target) {
+        int i = 0, j = nums.length - 1;
+        do {
+            if (i >= j) {
+                return null;
+            }
+            if (nums[i] + nums[j] < target) {
+                i++;
+            }
+            if (nums[i] + nums[j] > target) {
+                j--;
+            }
+        } while (nums[i] + nums[j] != target);
+        return new int[]{i + 1, j + 1};
+    }
 }
