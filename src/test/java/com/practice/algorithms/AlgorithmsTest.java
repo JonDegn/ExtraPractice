@@ -1,13 +1,14 @@
 package com.practice.algorithms;
 
 
+import com.practice.linkedlist.LinkedList;
 import org.junit.Assert;
 import org.junit.Test;
 
 public class AlgorithmsTest {
 
     @Test
-    public void TestTwoSum() {
+    public void testTwoSum() {
         //Case 1
         int[] given = new int[]{2, 7, 11, 15};
         int target = 9;
@@ -19,7 +20,7 @@ public class AlgorithmsTest {
     }
 
     @Test
-    public void TestTwoSumII() {
+    public void testTwoSumII() {
         //Case 1
         int[] given = new int[]{2, 7, 11, 15};
         int target = 9;
