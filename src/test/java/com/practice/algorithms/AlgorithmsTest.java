@@ -63,4 +63,10 @@ public class AlgorithmsTest {
         Random r = new Random();
         Algorithms.graph(() -> r.nextInt(6) + r.nextInt(6) + 2, 2, 12, 10000);
     }
+
+    @Test
+    public void testMorse() {
+        List<String> results = Algorithms.morse(5, "");
+        results.forEach(System.out::println);
+    }
 }
