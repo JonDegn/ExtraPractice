@@ -1,9 +1,7 @@
 package com.practice.algorithms;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
+import java.util.function.Supplier;
 
 /**
  * Created by jonathondegn on 6/29/17.
@@ -121,4 +119,58 @@ public class Algorithms {
         return result;
     }
     // O(n^2)
+
+    //    https://www.reddit.com/r/dailyprogrammer/comments/wk066/7132012_challenge_76_intermediate_probability/
+    //    Write a function graph(f, low, high, tests) that outputs a probability graph of the function f from range low
+    //    to high (inclusive) over tests tests (i.e., counting the frequencies of f() outputs). f takes no arguments and
+    //    returns an integer, low, high and tests are all integer values. For example, a function f that simulates
+    //    two-dice rolls:
+    //    def two_dice():
+    //            return random.randint(1, 6) + random.randint(1, 6)
+    //    Then graph(f, 2, 12, 10000) should output something roughly like:
+    //            2: ##
+    //            3: #####
+    //            4: #######
+    //            5: ###########
+    //            6: #############
+    //            7: #################
+    //            8: #############
+    //            9: ###########
+    //           10: ########
+    //           11: #####
+    //           12: ##
+    //    For bonus points, output the graph with the numbers on the bottom and the bars drawn vertically.
+
+    public static void graph(Supplier<Integer> f, int low, int high, int tests) {
+        Map<Integer, Integer> frequencies = new HashMap<>();
+        for (int i = 0; i < tests; i++) {
+
+            Integer k = f.get();
+            if (frequencies.containsKey(k)) {
+                frequencies.put(k, frequencies.get(k) + 1);
+            } else {
+                frequencies.put(k, 1);
+            }
+        }
+
+        int highestFreq = 0;
+        for (int i = low; i <= high; i++) {
+            if (frequencies.containsKey(i)) {
+                if (highestFreq < frequencies.get(i)) {
+                    highestFreq = frequencies.get(i);
+                }
+            } else {
+                frequencies.put(i, 0);
+            }
+        }
+        for (int i = low; i <= high; i++) {
+            System.out.printf("%4d: ", i);
+
+            for (int j = 0; j < ((double) frequencies.get(i) / tests) * 100; j++) {
+                System.out.print("#");
+            }
+            System.out.println();
+        }
+    }
+
 }

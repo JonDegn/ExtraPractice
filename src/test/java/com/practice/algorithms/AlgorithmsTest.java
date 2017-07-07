@@ -1,12 +1,11 @@
 package com.practice.algorithms;
 
 
-import com.practice.linkedlist.LinkedList;
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 
 public class AlgorithmsTest {
 
@@ -57,5 +56,11 @@ public class AlgorithmsTest {
         List<List<Integer>> result = Algorithms.threeSum(new int[]{-1, 0, 1, 2, -1, -4});
         Assert.assertArrayEquals(new Integer[]{-1, -1, 2}, result.get(0).toArray());
         Assert.assertArrayEquals(new Integer[]{-1, 0, 1}, result.get(1).toArray());
+    }
+
+    @Test
+    public void testGraph() {
+        Random r = new Random();
+        Algorithms.graph(() -> r.nextInt(6) + r.nextInt(6) + 2, 2, 12, 10000);
     }
 }
