@@ -85,7 +85,7 @@ public class Algorithms {
     // Find all unique triplets in the array which gives the sum of zero.
     // Note: Elements in a triplet (a,b,c) must be in non-descending order. (ie, a  b  c)
     public static List<List<Integer>> threeSum(int[] nums) {
-        List<List<Integer>> result = new ArrayList<List<Integer>>();
+        List<List<Integer>> result = new ArrayList<>();
 
         if (nums == null || nums.length < 3) {
             return result;
@@ -119,6 +119,42 @@ public class Algorithms {
         return result;
     }
     // O(n^2)
+
+    //    Given an array S of n integers, are there elements a, b, c, and d in S such that a + b + c
+    //    + d = target? Find all unique quadruplets in the array which gives the sum of target.
+    //    Note: Elements in a quadruplet (a,b,c,d) must be in non-descending order. (ie, a ≤
+    //    b ≤ c ≤ d) The solution set must not contain duplicate quadruplets.
+    public static List<List<Integer>> fourSum(int[] nums, int target) {
+        List<List<Integer>> result = new ArrayList<>();
+        if (nums == null || nums.length < 4) {
+            return result;
+        }
+        Arrays.sort(nums);
+
+        for (int i = 0; i < nums.length - 3; i++) {
+            if (i != 0 && nums[i] == nums[i - 1]) continue; // skip duplicate numbers
+
+            for (int j = i + 1; j < nums.length - 2; j++) {
+                if (j != i + 1 && nums[j] == nums[j - 1]) continue; // skip duplicate numbers
+                int k = j + 1;
+                int l = nums.length - 1;
+                while (k < l) {
+                    if (nums[i] + nums[j] + nums[k] + nums[l] < target) {
+                        k++;
+                    } else if (nums[i] + nums[j] + nums[k] + nums[l] > target) {
+                        l--;
+                    } else {
+                        result.add(Arrays.asList(nums[i], nums[j], nums[k], nums[l]));
+                        k++;
+                        l--;
+                        while (k < l && nums[l] == nums[l + 1]) l--; // skip duplicate numbers
+                        while (k < l && nums[k] == nums[k - 1]) k++; // skip duplicate numbers
+                    }
+                }
+            }
+        }
+        return result;
+    }
 
     //    Probability Graph
     //    https://www.reddit.com/r/dailyprogrammer/comments/wk066/7132012_challenge_76_intermediate_probability/

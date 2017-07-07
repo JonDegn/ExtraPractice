@@ -69,4 +69,12 @@ public class AlgorithmsTest {
         List<String> results = Algorithms.morse(5, "");
         results.forEach(System.out::println);
     }
+
+    @Test
+    public void testFourSum() {
+        List<List<Integer>> results = Algorithms.fourSum(new int[]{1, 0, -1, 0, -2, 2}, 0);
+        Assert.assertArrayEquals(new Integer[]{-2, -1, 1, 2}, results.get(0).toArray());
+        Assert.assertArrayEquals(new Integer[]{-2, 0, 0, 2}, results.get(1).toArray());
+        Assert.assertArrayEquals(new Integer[]{-1, 0, 0, 1}, results.get(2).toArray());
+    }
 }
