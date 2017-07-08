@@ -120,6 +120,36 @@ public class Algorithms {
     }
     // O(n^2)
 
+    public static int threeSumClosest(int[] nums, int target) {
+        int min = Integer.MAX_VALUE;
+        int result = 0;
+
+        Arrays.sort(nums);
+
+        for (int i = 0; i < nums.length - 2; i++) {
+            int j = i + 1;
+            int k = nums.length - 1;
+            while (j < k) {
+                int curr = nums[i] + nums[j] + nums[k];
+                int diff = Math.abs(curr - target);
+
+                if (diff == 0) return curr;
+
+                if (diff < min) {
+                    min = diff;
+                    result = curr;
+                }
+
+                if (curr < target) {
+                    j++;
+                } else {
+                    k--;
+                }
+            }
+        }
+        return result;
+    }
+
     //    Given an array S of n integers, are there elements a, b, c, and d in S such that a + b + c
     //    + d = target? Find all unique quadruplets in the array which gives the sum of target.
     //    Note: Elements in a quadruplet (a,b,c,d) must be in non-descending order. (ie, a ≤
@@ -177,7 +207,6 @@ public class Algorithms {
     //           11: #####
     //           12: ##
     //    For bonus points, output the graph with the numbers on the bottom and the bars drawn vertically.
-
     public static void graph(Supplier<Integer> f, int low, int high, int tests) {
         Map<Integer, Integer> frequencies = new HashMap<>();
         for (int i = 0; i < tests; i++) {

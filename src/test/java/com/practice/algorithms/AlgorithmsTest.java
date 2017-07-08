@@ -77,4 +77,16 @@ public class AlgorithmsTest {
         Assert.assertArrayEquals(new Integer[]{-2, 0, 0, 2}, results.get(1).toArray());
         Assert.assertArrayEquals(new Integer[]{-1, 0, 0, 1}, results.get(2).toArray());
     }
+
+    @Test
+    public void testThreeSumClosest() {
+        int result = Algorithms.threeSumClosest(new int[]{-1, 2, 1, -4}, 1);
+        Assert.assertEquals(2, result);
+
+        result = Algorithms.threeSumClosest(new int[]{-1, 2, 1, -4}, 2);
+        Assert.assertEquals(2, result);
+
+        result = Algorithms.threeSumClosest(new int[]{-4, 0, 0, 0}, 0);
+        Assert.assertEquals(0, result);
+    }
 }
