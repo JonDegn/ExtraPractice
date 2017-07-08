@@ -60,12 +60,14 @@ public class AlgorithmsTest {
 
     @Test
     public void testGraph() {
+        //not really a test, just prints results
         Random r = new Random();
         Algorithms.graph(() -> r.nextInt(6) + r.nextInt(6) + 2, 2, 12, 10000);
     }
 
     @Test
     public void testMorse() {
+        //not really a test, just prints results
         List<String> results = Algorithms.morse(5, "");
         results.forEach(System.out::println);
     }
@@ -88,5 +90,17 @@ public class AlgorithmsTest {
 
         result = Algorithms.threeSumClosest(new int[]{-4, 0, 0, 0}, 0);
         Assert.assertEquals(0, result);
+    }
+
+    @Test
+    public void testMinSubArrayLen() {
+        int result = Algorithms.minSubArrayLen(7, new int[]{2,3,1,2,4,3});
+        Assert.assertEquals(2, result);
+
+        result = Algorithms.minSubArrayLen(7, new int[]{2,3,1});
+        Assert.assertEquals(0, result);
+
+        result = Algorithms.minSubArrayLen(7, new int[]{1,2,1,1,1,1,1,7});
+        Assert.assertEquals(1, result);
     }
 }

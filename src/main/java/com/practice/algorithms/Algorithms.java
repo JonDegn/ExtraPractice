@@ -120,6 +120,9 @@ public class Algorithms {
     }
     // O(n^2)
 
+    //    Given an array S of n integers, find three integers in S such that the sum is closest to a
+    //    given number, target. Return the sum of the three integers. You may assume that each
+    //    input would have exactly one solution.
     public static int threeSumClosest(int[] nums, int target) {
         int min = Integer.MAX_VALUE;
         int result = 0;
@@ -149,6 +152,7 @@ public class Algorithms {
         }
         return result;
     }
+    // O(n^2)
 
     //    Given an array S of n integers, are there elements a, b, c, and d in S such that a + b + c
     //    + d = target? Find all unique quadruplets in the array which gives the sum of target.
@@ -267,5 +271,30 @@ public class Algorithms {
         return results;
     }
 
+    //    Given an array of n positive integers and a positive integer s, find the minimal length
+    //    of a subarray of which the sum ≥ s. If there isn’t one, return 0 instead.
+    public static int minSubArrayLen(int s, int[] nums) {
+        if (nums == null || nums.length == 0) return 0;
+        int result = nums.length;
+        int start = 0, onePastEnd = 0, sum = 0;
+        boolean exists = false;
 
+        while (onePastEnd <= nums.length) {
+            if (sum >= s) {
+                exists = true;
+                if (start == onePastEnd - 1) return 1;
+
+                result = Math.min(result, onePastEnd - start);
+                sum = sum - nums[start];
+                start++;
+            } else {
+                if (onePastEnd == nums.length) break;
+
+                sum = sum + nums[onePastEnd];
+                onePastEnd++;
+            }
+        }
+
+        return exists ? result : 0;
+    }
 }
