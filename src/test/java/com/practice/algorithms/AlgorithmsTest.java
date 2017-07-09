@@ -103,4 +103,10 @@ public class AlgorithmsTest {
         result = Algorithms.minSubArrayLen(7, new int[]{1,2,1,1,1,1,1,7});
         Assert.assertEquals(1, result);
     }
+
+    @Test
+    public void testRemoveDuplicates() {
+        int[] result = Algorithms.removeDuplicates(new int[]{1, 1, 2});
+        Assert.assertArrayEquals(new int[]{1,2}, result);
+    }
 }

@@ -297,4 +297,26 @@ public class Algorithms {
 
         return exists ? result : 0;
     }
+
+    //remove duplicates from a sorted array
+    // can't resize array, so returning new one
+    public static int[] removeDuplicates(int[] a) {
+        if (a.length < 2) {
+            return a;
+        }
+
+        int i = 0, j = 1;
+
+        while (j < a.length) {
+            if (a[i] == a[j]) {
+                j++;
+            } else {
+                i++;
+                a[i] = a[j];
+                j++;
+            }
+        }
+
+        return Arrays.copyOf(a, i+1);
+    }
 }
