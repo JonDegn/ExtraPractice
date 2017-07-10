@@ -109,4 +109,10 @@ public class AlgorithmsTest {
         int[] result = Algorithms.removeDuplicates(new int[]{1, 1, 2});
         Assert.assertArrayEquals(new int[]{1,2}, result);
     }
+
+    @Test
+    public void testRemoveDuplicatesII() {
+        int[] result = Algorithms.removeDuplicatesII(new int[]{1, 1, 1, 2, 2, 5, 5, 5, 5, 5, 7, 8});
+        Assert.assertArrayEquals(new int[]{1,1,2,2,5,5,7,8}, result);
+    }
 }

@@ -301,7 +301,7 @@ public class Algorithms {
     //remove duplicates from a sorted array
     // can't resize array, so returning new one
     public static int[] removeDuplicates(int[] a) {
-        if (a.length < 2) {
+        if (a == null || a.length < 2) {
             return a;
         }
 
@@ -317,6 +317,40 @@ public class Algorithms {
             }
         }
 
-        return Arrays.copyOf(a, i+1);
+        return Arrays.copyOf(a, i + 1);
+    }
+
+    // remove duplicates that occur more than twice from a sorted array
+    // can't resize array, so returning new one
+    public static int[] removeDuplicatesII(int[] a) {
+        if (a == null || a.length < 3) {
+            return a;
+        }
+
+        int previous = a[0];
+        boolean seenTwo = false;
+        int count = 0;
+
+        int idxToUpdate = 1;
+
+        for (int i = 1; i < a.length; i++) {
+            int curr = a[i];
+
+            if (curr == previous) {
+                if (!seenTwo) {
+                    seenTwo = true;
+                    a[idxToUpdate++] = curr;
+                    continue;
+                } else {
+                    count++;
+                }
+            }else {
+                previous = curr;
+                a[idxToUpdate++] = curr;
+                seenTwo = false;
+            }
+        }
+
+        return Arrays.copyOf(a, a.length - count);
     }
 }
