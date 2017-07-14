@@ -115,4 +115,10 @@ public class AlgorithmsTest {
         int[] result = Algorithms.removeDuplicatesII(new int[]{1, 1, 1, 2, 2, 5, 5, 5, 5, 5, 7, 8});
         Assert.assertArrayEquals(new int[]{1,1,2,2,5,5,7,8}, result);
     }
+
+    @Test
+    public void testMaxArea() {
+        int result = Algorithms.maxArea(new int[]{3, 5, 7, 5, 6, 5, 9, 5});
+        Assert.assertEquals(30, result);
+    }
 }
