@@ -94,31 +94,42 @@ public class AlgorithmsTest {
 
     @Test
     public void testMinSubArrayLen() {
-        int result = Algorithms.minSubArrayLen(7, new int[]{2,3,1,2,4,3});
+        int result = Algorithms.minSubArrayLen(7, new int[]{2, 3, 1, 2, 4, 3});
         Assert.assertEquals(2, result);
 
-        result = Algorithms.minSubArrayLen(7, new int[]{2,3,1});
+        result = Algorithms.minSubArrayLen(7, new int[]{2, 3, 1});
         Assert.assertEquals(0, result);
 
-        result = Algorithms.minSubArrayLen(7, new int[]{1,2,1,1,1,1,1,7});
+        result = Algorithms.minSubArrayLen(7, new int[]{1, 2, 1, 1, 1, 1, 1, 7});
         Assert.assertEquals(1, result);
     }
 
     @Test
     public void testRemoveDuplicates() {
         int[] result = Algorithms.removeDuplicates(new int[]{1, 1, 2});
-        Assert.assertArrayEquals(new int[]{1,2}, result);
+        Assert.assertArrayEquals(new int[]{1, 2}, result);
     }
 
     @Test
     public void testRemoveDuplicatesII() {
         int[] result = Algorithms.removeDuplicatesII(new int[]{1, 1, 1, 2, 2, 5, 5, 5, 5, 5, 7, 8});
-        Assert.assertArrayEquals(new int[]{1,1,2,2,5,5,7,8}, result);
+        Assert.assertArrayEquals(new int[]{1, 1, 2, 2, 5, 5, 7, 8}, result);
     }
 
     @Test
     public void testMaxArea() {
         int result = Algorithms.maxArea(new int[]{3, 5, 7, 5, 6, 5, 9, 5});
         Assert.assertEquals(30, result);
+    }
+
+    @Test
+    public void testCandy() {
+        // 1, 2, 3, 1, 2, 1, 3, 2, 1
+        int result = Algorithms.candy(new int[]{3, 5, 7, 5, 6, 5, 9, 5, 4});
+        Assert.assertEquals(1 + 2 + 3 + 1 + 2 + 1 + 3 + 2 + 1, result);
+
+        // 1, 2, 3, 1, 1, 1, 2
+        result = Algorithms.candy(new int[]{3, 5, 7, 5, 5, 5, 9});
+        Assert.assertEquals(1 + 2 + 3 + 1 + 1 + 1 + 2, result);
     }
 }

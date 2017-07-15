@@ -344,7 +344,7 @@ public class Algorithms {
                 } else {
                     count++;
                 }
-            }else {
+            } else {
                 previous = curr;
                 a[idxToUpdate++] = curr;
                 seenTwo = false;
@@ -354,16 +354,16 @@ public class Algorithms {
         return Arrays.copyOf(a, a.length - count);
     }
 
-//    Given n non-negative integers a1, a2, ..., an, where each represents a point at coordinate
-//    (i, ai). n vertical lines are drawn such that the two endpoints of line i is at (i, ai)
-//    and (i, 0). Find two lines, which together with x-axis forms a container, such that the
-//    container contains the most water.
+    //    Given n non-negative integers a1, a2, ..., an, where each represents a point at coordinate
+    //    (i, ai). n vertical lines are drawn such that the two endpoints of line i is at (i, ai)
+    //    and (i, 0). Find two lines, which together with x-axis forms a container, such that the
+    //    container contains the most water.
     public static int maxArea(int[] heights) {
         if (heights == null || heights.length < 2) {
             return 0;
         }
         int left = 0;
-        int right = heights.length-1;
+        int right = heights.length - 1;
         int max = 0;
         while (left < right) {
             max = Math.max(max, (right - left) * Math.min(heights[left], heights[right]));
@@ -374,5 +374,35 @@ public class Algorithms {
             }
         }
         return max;
+    }
+
+    //    There are N children standing in a line. Each child is assigned a rating value. You are
+    //    giving candies to these children subjected to the following requirements:
+    //      1. Each child must have at least one candy.
+    //      2. Children with a higher rating get more candies than their neighbors.
+    //    What is the minimum candies you must give?
+    public static int candy(int[] ratings) {
+        if (ratings == null | ratings.length == 0) {
+            return 0;
+        }
+        int[] candies = new int[ratings.length];
+        candies[0] = 1;
+        for (int i = 1; i < ratings.length; i++) {
+            if (ratings[i] > ratings[i - 1]) {
+                candies[i] = candies[i - 1] + 1;
+            } else {
+                candies[i] = 1;
+            }
+        }
+        int totalCandy = candies[ratings.length - 1];
+        for (int i = ratings.length - 2; i >= 0; i--) {
+            int newGuess = 1;
+            if (ratings[i] > ratings[i + 1]) {
+                newGuess = candies[i + 1] + 1;
+            }
+            candies[i] = Math.max(candies[i], newGuess);
+            totalCandy += candies[i];
+        }
+        return totalCandy;
     }
 }
