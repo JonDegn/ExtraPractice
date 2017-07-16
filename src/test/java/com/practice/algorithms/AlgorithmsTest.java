@@ -132,4 +132,13 @@ public class AlgorithmsTest {
         result = Algorithms.candy(new int[]{3, 5, 7, 5, 5, 5, 9});
         Assert.assertEquals(1 + 2 + 3 + 1 + 1 + 1 + 2, result);
     }
+
+    @Test
+    public void testTrap() {
+        //       +
+        //   +   ++ +
+        // + ++ ++++++
+        int result = Algorithms.trap(new int[]{0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1});
+        Assert.assertEquals(6, result);
+    }
 }
