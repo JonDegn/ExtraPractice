@@ -1,6 +1,9 @@
 package com.practice.arrays;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
+import java.util.StringJoiner;
 
 public class ArrayProblems {
 
@@ -39,5 +42,41 @@ public class ArrayProblems {
             nums[idxToReplace] = 0;
             idxToReplace++;
         }
+    }
+
+    //    Given a sorted integer array without duplicates, return the summary of its ranges for
+    //    consecutive numbers
+    public static List<String> summaryRanges(int[] nums) {
+        List<String> ranges = new ArrayList<>();
+
+        if (nums == null || nums.length < 1) {
+            return ranges;
+        }
+        if (nums.length == 1) {
+            ranges.add(nums[0] + "");
+        }
+
+        int rangeStart = 0;
+        for (int i = 1; i < nums.length; i++) {
+            if (nums[i] == nums[i - 1] + 1) {
+                if (i == nums.length - 1) {
+                    ranges.add(nums[rangeStart] + "->" + nums[i]);
+                }
+            }
+            if (nums[i] != nums[i - 1] + 1) {
+                //add range to ranges
+                if (i - rangeStart > 1) {
+                    ranges.add(nums[rangeStart] + "->" + nums[i - 1]);
+                } else {
+                    ranges.add(nums[rangeStart] + "");
+                }
+                if (i == nums.length - 1) {
+                    ranges.add(nums[i] + "");
+                }
+                rangeStart = i;
+            }
+        }
+
+        return ranges;
     }
 }
