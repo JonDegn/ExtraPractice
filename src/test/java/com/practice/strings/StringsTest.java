@@ -19,4 +19,11 @@ public class StringsTest {
         Assert.assertEquals("The Vitamins are in my Fresh California Raisins", test2);
     }
 
+    @Test
+    public void testIsOneEditDistance() {
+        Assert.assertTrue(Strings.isOneEditDistance("cat", "car"));
+        Assert.assertTrue(Strings.isOneEditDistance("cat", "cart"));
+        Assert.assertTrue(Strings.isOneEditDistance("car", "cart"));
+        Assert.assertFalse(Strings.isOneEditDistance("car", "car"));
+    }
 }

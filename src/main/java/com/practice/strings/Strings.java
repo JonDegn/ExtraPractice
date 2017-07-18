@@ -5,6 +5,7 @@ import java.util.List;
 
 public class Strings {
 
+    //    https://www.reddit.com/r/dailyprogrammer/comments/wjzly/7132012_challenge_76_easy_title_case/
     //    Write a function that transforms a string into title case. This mostly means: capitalizing only every first letter
     //    of every word in the string. However, there are some non-obvious exceptions to title case which can't easily be
     //    hard-coded. Your function must accept, as a second argument, a set or list of words that should not be capitalized.
@@ -33,6 +34,39 @@ public class Strings {
             space = " ";
         }
         return newTitle.toString();
+    }
+
+    //    Given two strings S and T, determine if they are both one edit distance apart.
+    public static boolean isOneEditDistance(String s, String t) {
+        if (s == null || t == null) return false;
+        if (Math.abs(s.length() - t.length()) > 1) return false;
+
+        int i = 0;
+        int j = 0;
+        int count = 0;
+
+        while (i < s.length() && j < t.length()) {
+            if (s.charAt(i) == t.charAt(j)) {
+                i++;
+                j++;
+            } else {
+                count++;
+                if (count > 1) return false;
+
+                if (s.length() > t.length()) {
+                    i++;
+                } else if (s.length() < t.length()) {
+                    j++;
+                } else {
+                    i++;
+                    j++;
+                }
+            }
+        }
+
+        if (i < s.length() || j < t.length()) count++;
+        if (count == 1) return true;
+        return false;
     }
 
 }
