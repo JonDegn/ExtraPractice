@@ -26,11 +26,20 @@ public class ArrayProblemsTest {
 
     @Test
     public void testSummaryRanges() {
-        int[] nums = {0,1,2,4,5,7};
+        int[] nums = {0, 1, 2, 4, 5, 7};
         List<String> ranges = ArrayProblems.summaryRanges(nums);
         Assert.assertEquals("0->2", ranges.get(0));
         Assert.assertEquals("4->5", ranges.get(1));
         Assert.assertEquals("7", ranges.get(2));
+    }
+
+    @Test
+    public void testMerge() {
+        int[] a = {0, 1, 2, 4, 5, 7, 0, 0, 0, 0, 0, 0, 0};
+        int[] b = {4, 5, 6, 7, 9, 10, 15};
+
+        ArrayProblems.merge(a, 6, b, 7);
+        Assert.assertArrayEquals(new int[]{0, 1, 2, 4, 4, 5, 5, 6, 7, 7, 9, 10, 15}, a);
     }
 
 }
