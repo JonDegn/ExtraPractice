@@ -42,4 +42,14 @@ public class ArrayProblemsTest {
         Assert.assertArrayEquals(new int[]{0, 1, 2, 4, 4, 5, 5, 6, 7, 7, 9, 10, 15}, a);
     }
 
+    @Test
+    public void isUnique() {
+        Assert.assertTrue(ArrayProblems.isUnique("asdfjkl"));
+        Assert.assertFalse(ArrayProblems.isUnique("asdfjkdl"));
+        Assert.assertTrue(ArrayProblems.isUnique(""));
+        Assert.assertTrue(ArrayProblems.isUnique("a"));
+        Assert.assertFalse(ArrayProblems.isUnique("aa"));
+        Assert.assertTrue(ArrayProblems.isUnique(null));
+    }
+
 }

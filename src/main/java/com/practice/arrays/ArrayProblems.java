@@ -1,9 +1,6 @@
 package com.practice.arrays;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.StringJoiner;
+import java.util.*;
 
 public class ArrayProblems {
 
@@ -95,5 +92,41 @@ public class ArrayProblems {
             a[m + n - 1] = b[n - 1];
             n--;
         }
+    }
+
+    //    Is Unique
+    //    Determine if a string has all unique characters
+    public static boolean isUnique(String s) {
+        // O(n) using hashmap
+        HashMap<Character,Integer> map = new HashMap<>();
+        if (s == null || s.length() < 2) return true;
+        for (int i = 0; i < s.length(); i++) {
+            if (map.containsKey(s.charAt(i))) {
+                return false;
+            }
+            map.put(s.charAt(i),1);
+        }
+        return true;
+        //--------
+        // O(n) using bit (boolean) map. This expects ASCII characters only
+//        boolean[] ascii = new boolean[256];
+//        if (s == null || s.length() < 2) return true;
+//        for (int i = 0; i < s.length(); i++) {
+//            if (ascii[s.charAt(i)]) return false;
+//            ascii[s.charAt(i)] = true;
+//        }
+//        return true;
+
+        //--------
+        // O(n log n)  Sorting string, then looping through
+//        if (s == null || s.length() < 2) return true;
+//        char[] chars = s.toCharArray();
+//        Arrays.sort(chars);
+//        for (int i = 1; i < chars.length; i++) {
+//            if (chars[i] == chars[i - 1]) {
+//                return false;
+//            }
+//        }
+//        return true;
     }
 }
