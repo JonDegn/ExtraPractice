@@ -64,4 +64,15 @@ public class StringsTest {
     public void testPalindromePermutation() {
         Assert.assertTrue(Strings.palindromePermutation("TacT Coa"));   //taco cat
     }
+
+    @Test
+    public void testCompressString() {
+        Assert.assertEquals("hi", Strings.compressString("hi"));
+        Assert.assertEquals("hello", Strings.compressString("hello"));
+        Assert.assertEquals("aaabbbccaaba", Strings.compressString("aaabbbccaaba"));
+        Assert.assertEquals("a3b3c2a2b3a1", Strings.compressString("aaabbbccaabbba"));
+        Assert.assertEquals("aabbcc", Strings.compressString("aabbcc"));
+        Assert.assertEquals("a4b1", Strings.compressString("aaaab"));
+        Assert.assertEquals("b1a4", Strings.compressString("baaaa"));
+    }
 }

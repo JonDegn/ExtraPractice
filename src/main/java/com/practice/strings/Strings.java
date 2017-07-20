@@ -184,4 +184,24 @@ public class Strings {
         return true;
     }
 
+    //   compress a string. aaabb -> a3b2
+    public static String compressString(String s) {
+        if (s == null || s.length() <= 2) return s;
+        StringBuilder sb = new StringBuilder();
+        sb.append(s.charAt(0));
+        int run = 1;
+        for (int i = 1; i < s.length(); i++) {
+            if (s.charAt(i) != s.charAt(i - 1)) {
+                sb.append(run);
+                sb.append(s.charAt(i));
+                run = 1;
+            } else {
+                run++;
+            }
+        }
+        sb.append(run);
+
+        return sb.length() < s.length() ? sb.toString() : s;
+    }
+
 }
