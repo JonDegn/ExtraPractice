@@ -69,4 +69,26 @@ public class Strings {
         return false;
     }
 
+    //    Given a list of words and two words word1 and word2, return the shortest distance
+    //    between these two words in the list.
+    public static int shortestDistance(String[] words, String w1, String w2) {
+        int w1pos = -1, w2pos = -1;
+        int min = Integer.MAX_VALUE;
+        for (int i = 0; i < words.length; i++) {
+            String word = words[i];
+            if (word.equals(w1)) {
+                w1pos = i;
+                if (w2pos != -1) {
+                    min = Math.min(min, w1pos - w2pos);
+                }
+            } else if (word.equals(w2)) {
+                w2pos = i;
+                if (w1pos != -1) {
+                    min = Math.min(min, w2pos - w1pos);
+                }
+            }
+        }
+        return min == Integer.MAX_VALUE ? -1 : min; // return -1 if either word is not found
+    }
+
 }

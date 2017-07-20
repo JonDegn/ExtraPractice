@@ -26,4 +26,17 @@ public class StringsTest {
         Assert.assertTrue(Strings.isOneEditDistance("car", "cart"));
         Assert.assertFalse(Strings.isOneEditDistance("car", "car"));
     }
+
+    @Test
+    public void testShortestDistance() {
+        int result = Strings.shortestDistance(new String[]{"practice", "makes", "perfect", "coding", "makes"}, "coding", "practice");
+        Assert.assertEquals(3, result);
+
+        result = Strings.shortestDistance(new String[]{"practice", "makes", "perfect", "coding", "makes"}, "makes", "coding");
+        Assert.assertEquals(1, result);
+
+        result = Strings.shortestDistance(new String[]{"practice", "makes", "perfect", "coding", "makes"}, "cow", "coding");
+        Assert.assertEquals(-1, result);
+    }
+
 }
