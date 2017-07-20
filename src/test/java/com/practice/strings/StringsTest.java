@@ -59,4 +59,9 @@ public class StringsTest {
         Strings.URLify(chars, 13);
         Assert.assertEquals("Mr%20John%20Smith", new String(chars));
     }
+
+    @Test
+    public void testPalindromePermutation() {
+        Assert.assertTrue(Strings.palindromePermutation("TacT Coa"));   //taco cat
+    }
 }

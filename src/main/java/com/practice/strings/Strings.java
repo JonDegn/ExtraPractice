@@ -2,6 +2,7 @@ package com.practice.strings;
 
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 
 public class Strings {
@@ -136,6 +137,7 @@ public class Strings {
         return true;
     }
 
+    // Replace spaces with %20
     public static void URLify(char[] s, int len) {
         int numOfSpaces = 0;
 
@@ -156,6 +158,30 @@ public class Strings {
                 s[insertionPoint--] = s[i];
             }
         }
+    }
+
+    //   Given a string, check if it is a permutation of a palindrome
+    public static boolean palindromePermutation(String s) {
+        HashMap<Character, Integer> chars = new HashMap<>();
+        for (char c : s.toLowerCase().toCharArray()) {
+            if (c == ' ') continue;
+            if (chars.containsKey(c)) {
+                chars.put(c, chars.get(c) + 1);
+            } else {
+                chars.put(c, 1);
+            }
+        }
+        boolean foundOdd = false;
+        for (char c : chars.keySet()) {
+            if (chars.get(c) % 2 == 1) {
+                if (!foundOdd) {
+                    foundOdd = true;
+                } else {
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 
 }
