@@ -39,4 +39,12 @@ public class StringsTest {
         Assert.assertEquals(-1, result);
     }
 
+    @Test
+    public void testShortestDistanceClass() {
+        WordDistance wd = new WordDistance(new String[]{"practice", "makes", "perfect", "coding", "makes"});
+        Assert.assertEquals(3, wd.shortestDistance("coding","practice"));
+        Assert.assertEquals(1, wd.shortestDistance("coding","makes"));
+        Assert.assertEquals(-1, wd.shortestDistance("asdf","adf"));
+
+    }
 }
