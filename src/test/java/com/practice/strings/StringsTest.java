@@ -5,8 +5,6 @@ import org.junit.Test;
 
 import java.util.Arrays;
 
-import static org.junit.Assert.*;
-
 
 public class StringsTest {
 
@@ -42,9 +40,9 @@ public class StringsTest {
     @Test
     public void testShortestDistanceClass() {
         WordDistance wd = new WordDistance(new String[]{"practice", "makes", "perfect", "coding", "makes"});
-        Assert.assertEquals(3, wd.shortestDistance("coding","practice"));
-        Assert.assertEquals(1, wd.shortestDistance("coding","makes"));
-        Assert.assertEquals(-1, wd.shortestDistance("asdf","adf"));
+        Assert.assertEquals(3, wd.shortestDistance("coding", "practice"));
+        Assert.assertEquals(1, wd.shortestDistance("coding", "makes"));
+        Assert.assertEquals(-1, wd.shortestDistance("asdf", "adf"));
     }
 
     @Test
@@ -53,5 +51,12 @@ public class StringsTest {
         Assert.assertFalse(Strings.checkPermutation("hello", "helo"));
         Assert.assertFalse(Strings.checkPermutation("hello", "hell"));
         Assert.assertFalse(Strings.checkPermutation("hello", "heloo"));
+    }
+
+    @Test
+    public void testURLify() {
+        char[] chars = "Mr John Smith    ".toCharArray();
+        Strings.URLify(chars, 13);
+        Assert.assertEquals("Mr%20John%20Smith", new String(chars));
     }
 }

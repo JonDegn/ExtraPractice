@@ -136,4 +136,26 @@ public class Strings {
         return true;
     }
 
+    public static void URLify(char[] s, int len) {
+        int numOfSpaces = 0;
+
+        for (int i = 0; i < len; i++) {
+            if (s[i] == ' ') {
+                numOfSpaces++;
+            }
+        }
+
+        int insertionPoint = len - 1 + (numOfSpaces * 2);
+
+        for (int i = len - 1; i >= 0; i--) {
+            if (s[i] == ' ') {
+                s[insertionPoint--] = '0';
+                s[insertionPoint--] = '2';
+                s[insertionPoint--] = '%';
+            } else {
+                s[insertionPoint--] = s[i];
+            }
+        }
+    }
+
 }
