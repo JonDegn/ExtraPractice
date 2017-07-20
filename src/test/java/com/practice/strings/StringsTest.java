@@ -45,6 +45,13 @@ public class StringsTest {
         Assert.assertEquals(3, wd.shortestDistance("coding","practice"));
         Assert.assertEquals(1, wd.shortestDistance("coding","makes"));
         Assert.assertEquals(-1, wd.shortestDistance("asdf","adf"));
+    }
 
+    @Test
+    public void testCheckPermutation() {
+        Assert.assertTrue(Strings.checkPermutation("hello", "olleh"));
+        Assert.assertFalse(Strings.checkPermutation("hello", "helo"));
+        Assert.assertFalse(Strings.checkPermutation("hello", "hell"));
+        Assert.assertFalse(Strings.checkPermutation("hello", "heloo"));
     }
 }

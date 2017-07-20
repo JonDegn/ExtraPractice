@@ -1,6 +1,7 @@
 package com.practice.strings;
 
 
+import java.util.Arrays;
 import java.util.List;
 
 public class Strings {
@@ -89,6 +90,50 @@ public class Strings {
             }
         }
         return min == Integer.MAX_VALUE ? -1 : min; // return -1 if either word is not found
+    }
+
+    //   Check if one string is a permutation of another
+    public static boolean checkPermutation(String s1, String s2) {
+        if (s1 == null || s2 == null || s1.length() != s2.length()) {
+            return false;
+        }
+
+        // O(n) Using HashMap
+//        Map<Character, Integer> chars = new HashMap<>(s1.length());
+//        for (char c : s1.toCharArray()) {
+//            if (chars.containsKey(c)) {
+//                chars.put(c, chars.get(c) + 1);
+//            } else {
+//                chars.put(c, 1);
+//            }
+//        }
+//        for (char c : s2.toCharArray()) {
+//            if (chars.containsKey(c) && chars.get(c) > 0) {
+//                chars.put(c, chars.get(c) - 1);
+//            } else {
+//                return false;
+//            }
+//        }
+//        for (char c : chars.keySet()) {
+//            if (chars.get(c) > 0) {
+//                return false;
+//            }
+//        }
+//        return true;
+
+        //O(n log n) sorting and comparing
+        char[] chars1 = s1.toCharArray();
+        char[] chars2 = s2.toCharArray();
+
+        Arrays.sort(chars1);
+        Arrays.sort(chars2);
+
+        for (int i = 0; i < chars1.length; i++) {
+            if (chars1[i] != chars2[i]) {
+                return false;
+            }
+        }
+        return true;
     }
 
 }
