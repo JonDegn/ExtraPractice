@@ -52,4 +52,25 @@ public class ArrayProblemsTest {
         Assert.assertTrue(ArrayProblems.isUnique(null));
     }
 
+    @Test
+    public void testRotateMatrix() {
+        char[][] matrix = {
+                {'a', 'b', 'c'},
+                {'d', 'e', 'f'},
+                {'g', 'h', 'i'}};
+        ArrayProblems.rotateMatrix(matrix);
+        Assert.assertArrayEquals(new char[][]{
+                {'g', 'd', 'a'},
+                {'h', 'e', 'b'},
+                {'i', 'f', 'c'}}, matrix);
+
+        char[][] matrix2 = {
+                {'a', 'b'},
+                {'c', 'd'}};
+        ArrayProblems.rotateMatrix(matrix2);
+        Assert.assertArrayEquals(new char[][]{
+                {'c', 'a'},
+                {'d', 'b'}}, matrix2);
+    }
+
 }

@@ -98,13 +98,13 @@ public class ArrayProblems {
     //    Determine if a string has all unique characters
     public static boolean isUnique(String s) {
         // O(n) using hashmap
-        HashMap<Character,Integer> map = new HashMap<>();
+        HashMap<Character, Integer> map = new HashMap<>();
         if (s == null || s.length() < 2) return true;
         for (int i = 0; i < s.length(); i++) {
             if (map.containsKey(s.charAt(i))) {
                 return false;
             }
-            map.put(s.charAt(i),1);
+            map.put(s.charAt(i), 1);
         }
         return true;
         //--------
@@ -128,5 +128,23 @@ public class ArrayProblems {
 //            }
 //        }
 //        return true;
+    }
+
+    //   rotate a matrix in place
+    public static void rotateMatrix(char[][] matrix) {
+        int top = 0, bottom = matrix.length - 1, left = 0, right = matrix.length - 1;
+        while (top < bottom && left < right) {
+            for (int i = 0; i <= (right - left) / 2; i++) {
+                char temp = matrix[bottom - i][left];
+                matrix[bottom - i][left] = matrix[bottom][right - i];
+                matrix[bottom][right - i] = matrix[top + i][right];
+                matrix[top + i][right] = matrix[top][left + i];
+                matrix[top][left + i] = temp;
+            }
+            top++;
+            bottom--;
+            left++;
+            right--;
+        }
     }
 }
