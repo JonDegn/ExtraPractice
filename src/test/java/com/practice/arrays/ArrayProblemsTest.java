@@ -73,4 +73,39 @@ public class ArrayProblemsTest {
                 {'d', 'b'}}, matrix2);
     }
 
+    @Test
+    public void testZeroMatrix() {
+        int[][] matrix = {
+                {1, 1, 1},
+                {1, 0, 1},
+                {1, 1, 1}};
+        ArrayProblems.zeroMatrix(matrix);
+        Assert.assertArrayEquals(new int[][]{
+                {1, 0, 1},
+                {0, 0, 0},
+                {1, 0, 1}}, matrix);
+
+        int[][] matrix2 = {
+                {0, 1},
+                {1, 0}};
+        ArrayProblems.zeroMatrix(matrix2);
+        Assert.assertArrayEquals(new int[][]{
+                {0, 0},
+                {0, 0}}, matrix2);
+    }
+
+    @Test
+    public void testIntersection() {
+        int[] result = ArrayProblems.intersection(new int[]{1,2,3,4,5,6}, new int[]{-1, 2,4,6,17});
+        Assert.assertArrayEquals(new int[] {2,4,6}, result);
+        result = ArrayProblems.intersection(new int[]{1,3,5}, new int[]{ 2,4,6});
+        Assert.assertArrayEquals(new int[] {}, result);
+    }
+
+    @Test
+    public void testIntersectionII() {
+        int[] result = ArrayProblems.intersectionII(new int[]{1,2,2,1}, new int[]{2,2});
+        Assert.assertArrayEquals(new int[] {2,2}, result);
+    }
+
 }

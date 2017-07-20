@@ -147,4 +147,95 @@ public class ArrayProblems {
             right--;
         }
     }
+
+    //   given a matrix MxN, if an element is 0, set its row and column to 0
+    public static void zeroMatrix(int[][] matrix) {
+//        Map<Integer,Boolean> rows = new HashMap<>(matrix.length);
+//        Map<Integer,Boolean> cols = new HashMap<>(matrix[0].length);
+//
+//        for (int i = 0; i < matrix.length; i++) {
+//            for (int j = 0; j < matrix[i].length; j++) {
+//                if (matrix[i][j] == 0) {
+//                    rows.put(i,true);
+//                    cols.put(j,true);
+//                    break;
+//                }
+//            }
+//        }
+//
+//        for (int i = 0; i < matrix.length; i++) {
+//            for (int j = 0; j < matrix[i].length; j++) {
+//                if (rows.containsKey(i) || cols.containsKey(j)) {
+//                    matrix[i][j] = 0;
+//                }
+//            }
+//        }
+
+        // time: O(mn) Space: O(mn)
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[i].length; j++) {
+                if (matrix[i][j] == 0) {
+                    matrix[0][j] = 0;
+                    matrix[i][0] = 0;
+                    break;
+                }
+            }
+        }
+
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[i].length; j++) {
+                if (matrix[0][j] == 0 || matrix[i][0] == 0) {
+                    matrix[i][j] = 0;
+                }
+            }
+        }
+    }
+
+    //    Given two arrays, write a function to compute their intersection.
+    public static int[] intersection(int[] a1, int[] a2) {
+        HashSet<Integer> set = new HashSet<>(a1.length);
+        for (int i : a1) {
+            set.add(i);
+        }
+        HashSet<Integer> set2 = new HashSet<>(a2.length);
+        for (int i : a2) {
+            if (set.contains(i)) {
+                set2.add(i);
+            }
+        }
+        int[] intersection = new int[set2.size()];
+        int idx = 0;
+        for (int i : set2) {
+            intersection[idx++] = i;
+        }
+        return intersection;
+    }
+
+    //    Given two arrays, write a function to compute their intersection. arrays contain duplicates
+    public static int[] intersectionII(int[] a1, int[] a2) {
+        Map<Integer, Integer> map = new HashMap<>(a1.length);
+        for (int i : a1) {
+            if (map.containsKey(i)) {
+                map.put(i, map.get(i) + 1);
+            } else {
+                map.put(i, 1);
+            }
+        }
+        List<Integer> list = new ArrayList<>();
+        for (int i : a2) {
+            if (map.containsKey(i)) {
+                if (map.get(i) > 1) {
+                    map.put(i, map.get(i) - 1);
+                } else {
+                    map.remove(i);
+                }
+                list.add(i);
+            }
+        }
+        int[] intersection = new int[list.size()];
+        for (int i = 0; i < list.size(); i++) {
+            intersection[i] = list.get(i);
+        }
+        return intersection;
+    }
 }
