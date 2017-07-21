@@ -32,6 +32,21 @@ public class LinkedListTest {
         Assert.assertEquals(100000, linkedListToNum(result));
     }
 
+    @Test
+    public void testRemoveDuplicates() {
+        ListNode list = numToLinkedList(11);
+        LinkedList.removeDuplicates(list);
+        Assert.assertEquals(1,linkedListToNum(list));
+
+        list = numToLinkedList(13321);
+        LinkedList.removeDuplicates(list);
+        Assert.assertEquals(321,linkedListToNum(list));
+
+        list = numToLinkedList(1212123412);
+        LinkedList.removeDuplicates(list);
+        Assert.assertEquals(3412,linkedListToNum(list));
+    }
+
 
 
     // Helper functions
