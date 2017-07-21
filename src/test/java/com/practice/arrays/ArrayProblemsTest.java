@@ -96,16 +96,24 @@ public class ArrayProblemsTest {
 
     @Test
     public void testIntersection() {
-        int[] result = ArrayProblems.intersection(new int[]{1,2,3,4,5,6}, new int[]{-1, 2,4,6,17});
-        Assert.assertArrayEquals(new int[] {2,4,6}, result);
-        result = ArrayProblems.intersection(new int[]{1,3,5}, new int[]{ 2,4,6});
-        Assert.assertArrayEquals(new int[] {}, result);
+        int[] result = ArrayProblems.intersection(new int[]{1, 2, 3, 4, 5, 6}, new int[]{-1, 2, 4, 6, 17});
+        Assert.assertArrayEquals(new int[]{2, 4, 6}, result);
+        result = ArrayProblems.intersection(new int[]{1, 3, 5}, new int[]{2, 4, 6});
+        Assert.assertArrayEquals(new int[]{}, result);
     }
 
     @Test
     public void testIntersectionII() {
-        int[] result = ArrayProblems.intersectionII(new int[]{1,2,2,1}, new int[]{2,2});
-        Assert.assertArrayEquals(new int[] {2,2}, result);
+        int[] result = ArrayProblems.intersectionII(new int[]{1, 2, 2, 1}, new int[]{2, 2});
+        Assert.assertArrayEquals(new int[]{2, 2}, result);
+    }
+
+    @Test
+    public void testSearchInsert() {
+        Assert.assertEquals(2, ArrayProblems.searchInsert(new int[]{1, 3, 5, 6}, 5));
+        Assert.assertEquals(1, ArrayProblems.searchInsert(new int[]{1, 3, 5, 6}, 2));
+        Assert.assertEquals(4, ArrayProblems.searchInsert(new int[]{1, 3, 5, 6}, 7));
+        Assert.assertEquals(0, ArrayProblems.searchInsert(new int[]{1, 3, 5, 6}, 0));
     }
 
 }
