@@ -204,4 +204,8 @@ public class Strings {
         return sb.length() < s.length() ? sb.toString() : s;
     }
 
+    public static boolean isRotation(String s1, String s2) {
+        return (s1 + s1).contains(s2);
+    }
+
 }

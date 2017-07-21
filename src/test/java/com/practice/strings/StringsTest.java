@@ -75,4 +75,10 @@ public class StringsTest {
         Assert.assertEquals("a4b1", Strings.compressString("aaaab"));
         Assert.assertEquals("b1a4", Strings.compressString("baaaa"));
     }
+
+    @Test
+    public void testIsRotation() {
+        Assert.assertTrue(Strings.isRotation("hello","lohel"));
+        Assert.assertFalse(Strings.isRotation("hello","lohle"));
+    }
 }
