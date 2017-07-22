@@ -64,5 +64,27 @@ public class LinkedList {
         }
     }
 
+    // return kth to last element in linked list
+    public static ListNode kthToLast(ListNode list, int k) {
+        if (list == null || k < 0) return null;
+
+        ListNode kth = list;
+        ListNode curr = list;
+
+        for (int i = 0; i < k; i++) {
+            if (curr.next == null) {
+                return null;
+            }
+            curr = curr.next;
+        }
+
+        while (curr.next != null) {
+            curr = curr.next;
+            kth = kth.next;
+        }
+
+        return kth;
+    }
+
 
 }
