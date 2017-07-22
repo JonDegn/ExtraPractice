@@ -116,4 +116,11 @@ public class ArrayProblemsTest {
         Assert.assertEquals(0, ArrayProblems.searchInsert(new int[]{1, 3, 5, 6}, 0));
     }
 
+    @Test
+    public void testFindMedianSortedArrays() {
+        Assert.assertEquals(2.5, ArrayProblems.findMedianSortedArrays(new int[]{1, 2, 3, 4}, new int[]{1, 2, 3, 4}),0.05);
+        Assert.assertEquals(5, ArrayProblems.findMedianSortedArrays(new int[]{5,6,7,8,9}, new int[]{1, 2, 3, 4}),0.05);
+        Assert.assertEquals(2.5, ArrayProblems.findMedianSortedArrays(new int[]{}, new int[]{1, 2, 3, 4}),0.05);
+    }
+
 }
