@@ -74,6 +74,21 @@ public class LinkedListTest {
         Assert.assertEquals(1, result.val);
     }
 
+    @Test
+    public void testDeleteNode() {
+        ListNode list = numToLinkedList(321);
+        Assert.assertTrue(LinkedList.deleteNode(list.next));
+        Assert.assertEquals(31, linkedListToNum(list));
+
+        list = numToLinkedList(321);
+        Assert.assertFalse(LinkedList.deleteNode(list.next.next));
+        Assert.assertEquals(321, linkedListToNum(list));
+
+        list = numToLinkedList(321);
+        Assert.assertTrue(LinkedList.deleteNode(list));
+        Assert.assertEquals(32, linkedListToNum(list));
+    }
+
     // Helper functions
 
     @Test

@@ -86,5 +86,13 @@ public class LinkedList {
         return kth;
     }
 
+    //  delete node in middle of list with only access to that node
+    public static boolean deleteNode(ListNode n) {
+        if (n == null || n.next == null) return false;
+
+        n.val = n.next.val;
+        n.next = n.next.next;
+        return true;
+    }
 
 }
