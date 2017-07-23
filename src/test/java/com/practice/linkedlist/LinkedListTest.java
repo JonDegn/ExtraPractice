@@ -33,59 +33,55 @@ public class LinkedListTest {
 
     @Test
     public void testRemoveDuplicates() {
-        ListNode<Integer> list = numToLinkedList(11);
+        ListNode<Integer> list = arrayToLinkedList(new Integer[]{1, 1});
         LinkedList.removeDuplicates(list);
-        Assert.assertEquals(1, linkedListToNum(list));
+        Assert.assertArrayEquals(new Integer[]{1}, linkedListToArray(list));
 
-        list = numToLinkedList(13321);
+        list = arrayToLinkedList(new Integer[]{1, 2, 3, 3, 1});
         LinkedList.removeDuplicates(list);
-        Assert.assertEquals(321, linkedListToNum(list));
+        Assert.assertArrayEquals(new Integer[]{1, 2, 3}, linkedListToArray(list));
 
-        list = numToLinkedList(1212123412);
+        list = arrayToLinkedList(new Integer[]{2, 1, 4, 3, 2, 1, 2, 1, 2, 1});
         LinkedList.removeDuplicates(list);
-        Assert.assertEquals(3412, linkedListToNum(list));
+        Assert.assertArrayEquals(new Integer[]{2, 1, 4, 3}, linkedListToArray(list));
     }
 
     @Test
     public void testKthFromLast() {
-        ListNode<Integer> list = numToLinkedList(7654321);
+        ListNode<Integer> list = arrayToLinkedList(new Integer[]{1, 2, 3, 4, 5, 6, 7});
         ListNode<Integer> result = LinkedList.kthToLast(list, 0);
         Assert.assertNotNull(result);
         Assert.assertEquals(7, (long) result.val);
 
-        list = numToLinkedList(7654321);
         result = LinkedList.kthToLast(list, 1);
         Assert.assertNotNull(result);
         Assert.assertEquals(6, (long) result.val);
 
-        list = numToLinkedList(7654321);
         result = LinkedList.kthToLast(list, 7);
         Assert.assertNull(result);
 
-        list = numToLinkedList(7654321);
         result = LinkedList.kthToLast(list, 6);
         Assert.assertNotNull(result);
         Assert.assertEquals(1, (long) result.val);
 
-        list = numToLinkedList(321);
-        result = LinkedList.kthToLast(list, 2);
+        result = LinkedList.kthToLast(list, 6);
         Assert.assertNotNull(result);
         Assert.assertEquals(1, (long) result.val);
     }
 
     @Test
     public void testDeleteNode() {
-        ListNode<Integer> list = numToLinkedList(321);
+        ListNode<Integer> list = arrayToLinkedList(new Integer[]{1, 2, 3});
         Assert.assertTrue(LinkedList.deleteNode(list.next));
-        Assert.assertEquals(31, linkedListToNum(list));
+        Assert.assertArrayEquals(new Integer[]{1, 3}, linkedListToArray(list));
 
-        list = numToLinkedList(321);
+        list = arrayToLinkedList(new Integer[]{1, 2, 3});
         Assert.assertFalse(LinkedList.deleteNode(list.next.next));
-        Assert.assertEquals(321, linkedListToNum(list));
+        Assert.assertArrayEquals(new Integer[]{1, 2, 3}, linkedListToArray(list));
 
-        list = numToLinkedList(321);
+        list = arrayToLinkedList(new Integer[]{1, 2, 3});
         Assert.assertTrue(LinkedList.deleteNode(list));
-        Assert.assertEquals(32, linkedListToNum(list));
+        Assert.assertArrayEquals(new Integer[]{2, 3}, linkedListToArray(list));
     }
 
     @Test
