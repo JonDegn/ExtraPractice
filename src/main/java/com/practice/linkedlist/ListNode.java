@@ -1,10 +1,10 @@
 package com.practice.linkedlist;
 
-public class ListNode {
-    int val;
-    ListNode next;
+public class ListNode<T> {
+    T val;
+    ListNode<T> next;
 
-    ListNode(int x) {
+    ListNode(T x) {
         val = x;
     }
 }
