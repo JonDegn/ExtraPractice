@@ -95,4 +95,24 @@ public class LinkedList {
         return true;
     }
 
+    // partition so that all nodes <x come before all nodes >=x
+    public static ListNode partition(ListNode n, int x) {
+        ListNode head = n;
+        ListNode tail = n;
+
+        while (n != null) {
+            ListNode next = n.next;
+            if (n.val < x) {
+                n.next = head;
+                head = n;
+            } else {
+                tail.next = n;
+                tail = n;
+            }
+            n = next;
+        }
+        tail.next = null;
+        return head;
+    }
+
 }
