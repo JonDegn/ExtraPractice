@@ -96,7 +96,7 @@ class LinkedList {
         return true;
     }
 
-    // partition so that all nodes <x come before all nodes >=x
+    // partition so that all nodes <result come before all nodes >=result
     static ListNode<Integer> partition(ListNode<Integer> n, int x) {
         ListNode<Integer> head = n;
         ListNode<Integer> tail = n;
@@ -135,4 +135,43 @@ class LinkedList {
         return true;
     }
 
+    // Check if a linked list is a palindrome recursively
+    static <T> boolean isPalindromeRecursive(ListNode<T> head) {
+        int length = listLength(head);
+        return isPalindromeRecursive(head, length).result;
+    }
+
+    private static <T> Result<T> isPalindromeRecursive(ListNode<T> node, int length) {
+        if (node == null || length <= 0) {
+            return new Result<>(true, node);
+        } else if (length == 1) {
+            return new Result<>(true, node.next);
+        }
+        Result<T> result = isPalindromeRecursive(node.next, length - 2);
+
+        if (!result.result || result.node == null) {
+            return result;
+        }
+
+        result.result = result.node.val.equals(node.val);
+        result.node = result.node.next;
+        return result;
+    }
+
+    private static <T> int listLength(ListNode<T> head) {
+        int length;
+        for (length = 0; head != null; head = head.next, length++) ;
+        return length;
+    }
+
+}
+
+class Result<T> {
+    public boolean result;
+    public ListNode<T> node;
+
+    public Result(boolean result, ListNode<T> node) {
+        this.result = result;
+        this.node = node;
+    }
 }

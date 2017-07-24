@@ -103,15 +103,24 @@ public class LinkedListTest {
     }
 
     @Test
-    public void testIsPalindrome(){
-        ListNode<Integer> list = arrayToLinkedList(new Integer[]{1,2,1,2,1});
+    public void testIsPalindrome() {
+        ListNode<Integer> list = arrayToLinkedList(new Integer[]{1, 2, 1, 2, 1});
         Assert.assertTrue(LinkedList.isPalindrome(list));
-        list = arrayToLinkedList(new Integer[]{1,2,1,2,2,1});
+        list = arrayToLinkedList(new Integer[]{1, 2, 1, 2, 2, 1});
         Assert.assertFalse(LinkedList.isPalindrome(list));
     }
 
-    // Helper functions
+    @Test
+    public void testIsPalindromeRecursive() {
+        ListNode<Integer> list = arrayToLinkedList(new Integer[]{1, 2, 1, 2, 1});
+        Assert.assertTrue(LinkedList.isPalindromeRecursive(list));
+        list = arrayToLinkedList(new Integer[]{1, 2, 1, 2, 2, 1});
+        Assert.assertFalse(LinkedList.isPalindromeRecursive(list));
+        list = arrayToLinkedList(new Integer[]{1, 2, 1, 2, 2, 1, 2, 1});
+        Assert.assertTrue(LinkedList.isPalindromeRecursive(list));
+    }
 
+    //<editor-fold desc="Helper Functions">
     @Test
     public void testNumToLinkedList() {
         Assert.assertEquals(59483, linkedListToNum(numToLinkedList(59483)));
@@ -176,4 +185,5 @@ public class LinkedListTest {
         }
         return (T[]) result;
     }
+    //</editor-fold>
 }
