@@ -164,6 +164,21 @@ class LinkedList {
         return length;
     }
 
+    static <T> ListNode<T> intersection(ListNode<T> list1, ListNode<T> list2) {
+        ListNode<T> cur = list2;
+        while (list1 != null) {
+            while (cur != null) {
+                if (list1 == cur) {
+                    return cur;
+                }
+                cur = cur.next;
+            }
+            cur = list2;
+            list1 = list1.next;
+        }
+        return null;
+    }
+
 }
 
 class Result<T> {

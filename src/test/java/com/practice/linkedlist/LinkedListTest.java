@@ -120,6 +120,16 @@ public class LinkedListTest {
         Assert.assertTrue(LinkedList.isPalindromeRecursive(list));
     }
 
+    @Test
+    public void testIntersection() {
+        ListNode<Integer> list1 = arrayToLinkedList(new Integer[]{1, 2, 3, 4, 5});
+        ListNode<Integer> list2 = arrayToLinkedList(new Integer[]{1, 2});
+        Assert.assertNull(LinkedList.intersection(list1, list2));
+        list2.next.next = list1.next.next;
+        ListNode<Integer> intersectingNode = LinkedList.intersection(list1, list2);
+        Assert.assertEquals(3, intersectingNode.val.longValue());
+    }
+
     //<editor-fold desc="Helper Functions">
     @Test
     public void testNumToLinkedList() {
