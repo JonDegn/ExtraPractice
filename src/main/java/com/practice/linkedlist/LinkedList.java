@@ -1,5 +1,7 @@
 package com.practice.linkedlist;
 
+import java.util.Stack;
+
 class LinkedList {
 
     // Add Two Numbers
@@ -27,7 +29,6 @@ class LinkedList {
         return tempHead.next;
     }
     // O(max(m,n)) where m and n are the length of l1 and l2
-
 
     // Remove duplicates from an unsorted linked list
     static <T> void removeDuplicates(ListNode<T> head) {
@@ -113,6 +114,25 @@ class LinkedList {
         }
         tail.next = null;
         return head;
+    }
+
+    // Check if a linked list is a palindrome
+    static <T> boolean isPalindrome(ListNode<T> head) {
+        Stack<T> nodeStack = new Stack<>();
+
+        ListNode<T> curr = head;
+        while (curr != null) {
+            nodeStack.add(curr.val);
+            curr = curr.next;
+        }
+        curr = head;
+        while (curr != null) {
+            if (!nodeStack.pop().equals(curr.val)) {
+                return false;
+            }
+            curr = curr.next;
+        }
+        return true;
     }
 
 }

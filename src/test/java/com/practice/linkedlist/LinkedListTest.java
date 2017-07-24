@@ -102,6 +102,14 @@ public class LinkedListTest {
         }
     }
 
+    @Test
+    public void testIsPalindrome(){
+        ListNode<Integer> list = arrayToLinkedList(new Integer[]{1,2,1,2,1});
+        Assert.assertTrue(LinkedList.isPalindrome(list));
+        list = arrayToLinkedList(new Integer[]{1,2,1,2,2,1});
+        Assert.assertFalse(LinkedList.isPalindrome(list));
+    }
+
     // Helper functions
 
     @Test
