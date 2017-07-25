@@ -8,6 +8,22 @@ import java.util.Stack;
  * Created by jonathondegn on 7/24/17.
  */
 public class StackProblems {
+    // Sort a stack using a temp stack
+    static void sortStack(Stack<Integer> stack) {
+        if (stack == null) return;
+        Stack<Integer> tempStack = new Stack<>();
+        while (!stack.isEmpty()) {
+            int tempVal = stack.pop();
+            while (!tempStack.isEmpty() && tempStack.peek() > tempVal) {
+                stack.push(tempStack.pop());
+            }
+            tempStack.push(tempVal);
+        }
+        while (!tempStack.isEmpty()) {
+            stack.push(tempStack.pop());
+        }
+    }
+
 }
 
 class SetOfStacks<T> {
