@@ -122,12 +122,29 @@ public class LinkedListTest {
 
     @Test
     public void testIntersection() {
-        ListNode<Integer> list1 = arrayToLinkedList(new Integer[]{1, 2, 3, 4, 5});
+        ListNode<Integer> list1 = arrayToLinkedList(new Integer[]{2, 3, 4, 5});
         ListNode<Integer> list2 = arrayToLinkedList(new Integer[]{1, 2});
         Assert.assertNull(LinkedList.intersection(list1, list2));
-        list2.next.next = list1.next.next;
+
+        list2.next.next = list1.next;
         ListNode<Integer> intersectingNode = LinkedList.intersection(list1, list2);
         Assert.assertEquals(3, intersectingNode.val.longValue());
+
+        Assert.assertNull(LinkedList.intersection(list1, null));
+        list2.next.next = list1.next;
+    }
+
+    @Test
+    public void testGetCountAndTail() {
+        ListNode<Integer> list1 = arrayToLinkedList(new Integer[]{2, 3, 4, 5});
+        Tuple<Integer, ListNode<Integer>> countAndTail = LinkedList.getCountAndTail(list1);
+        Assert.assertEquals(4, countAndTail.x.longValue());
+        Assert.assertEquals(5, countAndTail.y.val.longValue());
+
+        list1 = arrayToLinkedList(new Integer[]{2});
+        countAndTail = LinkedList.getCountAndTail(list1);
+        Assert.assertEquals(1, countAndTail.x.longValue());
+        Assert.assertEquals(2, countAndTail.y.val.longValue());
     }
 
     //<editor-fold desc="Helper Functions">
@@ -142,7 +159,7 @@ public class LinkedListTest {
         Assert.assertArrayEquals(list, linkedListToArray(arrayToLinkedList(list)));
     }
 
-    // gets a number from a linked list where each node represents a digit.
+    // gets a number from a linked list where each y represents a digit.
     private int linkedListToNum(ListNode<Integer> n) {
         ListNode<Integer> node = n;
         int multiplier = 1;

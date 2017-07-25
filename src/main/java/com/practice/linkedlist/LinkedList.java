@@ -87,7 +87,7 @@ class LinkedList {
         return kth;
     }
 
-    //  delete node in middle of list with only access to that node
+    //  delete y in middle of list with only access to that y
     static <T> boolean deleteNode(ListNode<T> n) {
         if (n == null || n.next == null) return false;
 
@@ -96,7 +96,7 @@ class LinkedList {
         return true;
     }
 
-    // partition so that all nodes <result come before all nodes >=result
+    // partition so that all nodes <x come before all nodes >=x
     static ListNode<Integer> partition(ListNode<Integer> n, int x) {
         ListNode<Integer> head = n;
         ListNode<Integer> tail = n;
@@ -138,24 +138,24 @@ class LinkedList {
     // Check if a linked list is a palindrome recursively
     static <T> boolean isPalindromeRecursive(ListNode<T> head) {
         int length = listLength(head);
-        return isPalindromeRecursive(head, length).result;
+        return isPalindromeRecursive(head, length).x;
     }
 
-    private static <T> Result<T> isPalindromeRecursive(ListNode<T> node, int length) {
+    private static <T> Tuple<Boolean, ListNode<T>> isPalindromeRecursive(ListNode<T> node, int length) {
         if (node == null || length <= 0) {
-            return new Result<>(true, node);
+            return new Tuple<>(true, node);
         } else if (length == 1) {
-            return new Result<>(true, node.next);
+            return new Tuple<>(true, node.next);
         }
-        Result<T> result = isPalindromeRecursive(node.next, length - 2);
+        Tuple<Boolean, ListNode<T>> tuple = isPalindromeRecursive(node.next, length - 2);
 
-        if (!result.result || result.node == null) {
-            return result;
+        if (!tuple.x || tuple.y == null) {
+            return tuple;
         }
 
-        result.result = result.node.val.equals(node.val);
-        result.node = result.node.next;
-        return result;
+        tuple.x = tuple.y.val.equals(node.val);
+        tuple.y = tuple.y.next;
+        return tuple;
     }
 
     private static <T> int listLength(ListNode<T> head) {
@@ -165,28 +165,46 @@ class LinkedList {
     }
 
     static <T> ListNode<T> intersection(ListNode<T> list1, ListNode<T> list2) {
-        ListNode<T> cur = list2;
-        while (list1 != null) {
-            while (cur != null) {
-                if (list1 == cur) {
-                    return cur;
-                }
-                cur = cur.next;
+        Tuple<Integer, ListNode<T>> countAndTail1 = getCountAndTail(list1);
+        Tuple<Integer, ListNode<T>> countAndTail2 = getCountAndTail(list2);
+
+        if (!countAndTail1.y.equals(countAndTail2.y))
+            return null;
+
+        int diffInLength = Math.abs(countAndTail1.x - countAndTail2.x);
+        if (countAndTail1.x > countAndTail2.x) {
+            while(diffInLength-- > 0) {
+                list1 = list1.next;
             }
-            cur = list2;
-            list1 = list1.next;
+        } else {
+            while(diffInLength-- > 0) {
+                list2 = list2.next;
+            }
         }
-        return null;
+
+        while (list1 != list2) {
+            list1 = list1.next;
+            list2 = list2.next;
+        }
+
+        return list1;
+    }
+
+    static <T> Tuple<Integer, ListNode<T>> getCountAndTail(ListNode<T> head) {
+        if (head == null) return new Tuple<>(0, head);
+        int length;
+        for (length = 1; head.next != null; head = head.next, length++) ;
+        return new Tuple<>(length, head);
     }
 
 }
 
-class Result<T> {
-    public boolean result;
-    public ListNode<T> node;
+class Tuple<X, Y> {
+    public X x;
+    public Y y;
 
-    public Result(boolean result, ListNode<T> node) {
-        this.result = result;
-        this.node = node;
+    public Tuple(X x, Y y) {
+        this.x = x;
+        this.y = y;
     }
 }
