@@ -47,3 +47,35 @@ class SetOfStacks<T> {
     }
 
 }
+
+class MyQueue<T> {
+    Stack<T> newest = new Stack<T>();
+    Stack<T> oldest = new Stack<T>();
+
+    void enqueue(T item) {
+        newest.push(item);
+
+    }
+
+    T dequeue() {
+        shiftStacks();
+        return oldest.pop();
+    }
+
+    T peek() {
+        shiftStacks();
+        return oldest.peek();
+    }
+
+    private void shiftStacks() {
+        if (oldest.isEmpty()) {
+            while (!newest.isEmpty()) {
+                oldest.push(newest.pop());
+            }
+        }
+    }
+
+    int size() {
+        return newest.size() + oldest.size();
+    }
+}

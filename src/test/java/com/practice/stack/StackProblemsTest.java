@@ -22,6 +22,20 @@ public class StackProblemsTest {
         Assert.assertEquals(2, stacks.popAt(0).longValue());
         Assert.assertEquals(3, stacks.pop().longValue());
         Assert.assertEquals(1, stacks.pop().longValue());
+    }
 
+    @Test
+    public void testMyQueue() {
+        MyQueue<Integer> queue = new MyQueue<>();
+        queue.enqueue(1);
+        queue.enqueue(2);
+        queue.enqueue(3);
+        Assert.assertEquals(3, queue.size());
+        Assert.assertEquals(1, queue.dequeue().longValue());
+        queue.enqueue(4);
+        Assert.assertEquals(2, queue.peek().longValue());
+        Assert.assertEquals(2, queue.dequeue().longValue());
+        Assert.assertEquals(3, queue.dequeue().longValue());
+        Assert.assertEquals(4, queue.dequeue().longValue());
     }
 }
