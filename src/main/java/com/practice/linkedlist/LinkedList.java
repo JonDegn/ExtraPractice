@@ -164,6 +164,7 @@ class LinkedList {
         return length;
     }
 
+    // Find the point where two linked lists intersect
     static <T> ListNode<T> intersection(ListNode<T> list1, ListNode<T> list2) {
         Tuple<Integer, ListNode<T>> countAndTail1 = getCountAndTail(list1);
         Tuple<Integer, ListNode<T>> countAndTail2 = getCountAndTail(list2);
@@ -173,11 +174,11 @@ class LinkedList {
 
         int diffInLength = Math.abs(countAndTail1.x - countAndTail2.x);
         if (countAndTail1.x > countAndTail2.x) {
-            while(diffInLength-- > 0) {
+            while (diffInLength-- > 0) {
                 list1 = list1.next;
             }
         } else {
-            while(diffInLength-- > 0) {
+            while (diffInLength-- > 0) {
                 list2 = list2.next;
             }
         }
@@ -195,6 +196,30 @@ class LinkedList {
         int length;
         for (length = 1; head.next != null; head = head.next, length++) ;
         return new Tuple<>(length, head);
+    }
+
+    // find the beginning of the loop
+    static <T> ListNode<T> findLoopBeginning(ListNode<T> head) {
+        ListNode<T> fastPointer = head;
+        ListNode<T> slowPointer = head;
+
+        while (fastPointer != null && fastPointer.next != null) {
+            fastPointer = fastPointer.next.next;
+            slowPointer = slowPointer.next;
+            if (slowPointer == fastPointer) {
+                break;
+            }
+        }
+        if (fastPointer == null || fastPointer.next == null) {
+            return null;
+        }
+
+        slowPointer = head;
+        while (fastPointer != slowPointer) {
+            fastPointer = fastPointer.next;
+            slowPointer = slowPointer.next;
+        }
+        return fastPointer;
     }
 
 }

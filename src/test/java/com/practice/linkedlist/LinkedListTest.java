@@ -147,6 +147,15 @@ public class LinkedListTest {
         Assert.assertEquals(2, countAndTail.y.val.longValue());
     }
 
+    @Test
+    public void testFindLoopBeginning() {
+        ListNode<Integer> list = arrayToLinkedList(new Integer[]{1, 2, 3, 4, 5, 6, 7});
+        Tuple<Integer, ListNode<Integer>> countAndTail = LinkedList.getCountAndTail(list);
+        countAndTail.y.next = list.next.next;
+        ListNode<Integer> loopBegining = LinkedList.findLoopBeginning(list);
+        Assert.assertEquals(3, loopBegining.val.longValue());
+    }
+
     //<editor-fold desc="Helper Functions">
     @Test
     public void testNumToLinkedList() {
