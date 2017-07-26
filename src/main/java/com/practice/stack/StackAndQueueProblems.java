@@ -102,7 +102,7 @@ class AnimalQueue {
     private int count = 0;
 
     void enqueue(Pet p) {
-        p.order = count++;
+        p.setOrder(count++);
         if (p.type == Pet.Type.Dog) {
             dogQueue.add(p);
         } else {
@@ -111,24 +111,22 @@ class AnimalQueue {
     }
 
     Pet dequeueDog() {
-        return dogQueue.isEmpty() ? null : dogQueue.remove();
+        return dogQueue.poll();
     }
 
     Pet dequeueCat() {
-        return catQueue.isEmpty() ? null : catQueue.remove();
+        return catQueue.poll();
     }
 
     Pet dequeueAny() {
         if (dogQueue.isEmpty()) {
-            if (catQueue.isEmpty()) {
-                return null;
-            }
-            return catQueue.remove();
+            return catQueue.poll();
         } else if (catQueue.isEmpty()) {
-            return dogQueue.remove();
+            return dogQueue.poll();
         }
 
-        return dogQueue.peek().order < catQueue.peek().order ? dogQueue.remove() : catQueue.remove();
+        return dogQueue.peek().getOrder() < catQueue.peek().getOrder() ?
+                dogQueue.remove() : catQueue.remove();
     }
 }
 

@@ -67,5 +67,6 @@ public class StackAndQueueProblemsTest {
         Assert.assertEquals("Fluffy", queue.dequeueCat().name);
         Assert.assertEquals("Fido", queue.dequeueAny().name);
         Assert.assertEquals("Spot", queue.dequeueDog().name);
+        Assert.assertNull(queue.dequeueDog());
     }
 }
