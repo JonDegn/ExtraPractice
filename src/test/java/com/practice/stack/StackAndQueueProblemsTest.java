@@ -8,7 +8,7 @@ import java.util.Stack;
 /**
  * Created by jonathondegn on 7/24/17.
  */
-public class StackProblemsTest {
+public class StackAndQueueProblemsTest {
     @Test
     public void testSetOfStacks() {
         SetOfStacks<Integer> stacks = new SetOfStacks<>(2);
@@ -48,10 +48,24 @@ public class StackProblemsTest {
         stack.push(2);
         stack.push(1);
         stack.push(4);
-        StackProblems.sortStack(stack);
+        StackAndQueueProblems.sortStack(stack);
         Assert.assertEquals(1, stack.pop().longValue());
         Assert.assertEquals(2, stack.pop().longValue());
         Assert.assertEquals(3, stack.pop().longValue());
         Assert.assertEquals(4, stack.pop().longValue());
+    }
+
+    @Test
+    public void testAnimalQueue() {
+        AnimalQueue queue = new AnimalQueue();
+        queue.enqueue(new Pet("Rex", Pet.Type.Dog));
+        queue.enqueue(new Pet("Fido", Pet.Type.Dog));
+        queue.enqueue(new Pet("Fluffy", Pet.Type.Cat));
+        queue.enqueue(new Pet("Spot", Pet.Type.Dog));
+        queue.enqueue(new Pet("Pete", Pet.Type.Cat));
+        Assert.assertEquals("Rex", queue.dequeueAny().name);
+        Assert.assertEquals("Fluffy", queue.dequeueCat().name);
+        Assert.assertEquals("Fido", queue.dequeueAny().name);
+        Assert.assertEquals("Spot", queue.dequeueDog().name);
     }
 }

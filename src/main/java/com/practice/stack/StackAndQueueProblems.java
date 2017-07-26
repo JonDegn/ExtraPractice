@@ -1,13 +1,11 @@
 package com.practice.stack;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Stack;
+import java.util.*;
 
 /**
  * Created by jonathondegn on 7/24/17.
  */
-public class StackProblems {
+public class StackAndQueueProblems {
     // Sort a stack using a temp stack
     static void sortStack(Stack<Integer> stack) {
         if (stack == null) return;
@@ -93,5 +91,67 @@ class MyQueue<T> {
 
     int size() {
         return newest.size() + oldest.size();
+    }
+}
+
+
+// Queue of cats and dogs. can dequeue either one.
+class AnimalQueue {
+    private Queue<Pet> dogQueue = new ArrayDeque<>();
+    private Queue<Pet> catQueue = new ArrayDeque<>();
+    private int count = 0;
+
+    void enqueue(Pet p) {
+        p.order = count++;
+        if (p.type == Pet.Type.Dog) {
+            dogQueue.add(p);
+        } else {
+            catQueue.add(p);
+        }
+    }
+
+    Pet dequeueDog() {
+        return dogQueue.isEmpty() ? null : dogQueue.remove();
+    }
+
+    Pet dequeueCat() {
+        return catQueue.isEmpty() ? null : catQueue.remove();
+    }
+
+    Pet dequeueAny() {
+        if (dogQueue.isEmpty()) {
+            if (catQueue.isEmpty()) {
+                return null;
+            }
+            return catQueue.remove();
+        } else if (catQueue.isEmpty()) {
+            return dogQueue.remove();
+        }
+
+        return dogQueue.peek().order < catQueue.peek().order ? dogQueue.remove() : catQueue.remove();
+    }
+}
+
+class Pet {
+    Type type;
+    String name = "";
+    int order;
+
+    public int getOrder() {
+        return order;
+    }
+
+    public void setOrder(int order) {
+        this.order = order;
+    }
+
+    Pet(String name, Type type) {
+        this.name = name;
+        this.type = type;
+    }
+
+    enum Type {
+        Dog,
+        Cat
     }
 }
