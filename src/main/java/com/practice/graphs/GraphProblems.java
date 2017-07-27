@@ -56,6 +56,55 @@ public class GraphProblems {
         return false;
     }
 
+    //given a sorted array with unique elements, create an algorithm that will create a bst with minimal height
+    static BinaryNode createMinimalBST(int[] nums) {
+        return createMinimalBST(nums, 0, nums.length - 1);
+    }
+
+    static BinaryNode createMinimalBST(int[] nums, int start, int end) {
+        if (start > end) return null;
+        int midIdx = (end + start) / 2;
+        BinaryNode binaryNode = new BinaryNode(nums[midIdx]);
+        binaryNode.left = createMinimalBST(nums, start, midIdx - 1);
+        binaryNode.right = createMinimalBST(nums, midIdx + 1, end);
+        return binaryNode;
+    }
+}
+
+class BinaryNode {
+    BinaryNode left;
+    BinaryNode right;
+    int val;
+
+    BinaryNode(int val) {
+        this.val = val;
+    }
+
+    void insert(int num) {
+        if (num < val) {
+            if (left == null) {
+                left = new BinaryNode(num);
+            } else {
+                left.insert(num);
+            }
+        } else {
+            if (right == null) {
+                right = new BinaryNode(num);
+            } else {
+                right.insert(num);
+            }
+        }
+    }
+
+    void inOrderPrint() {
+        if (left != null)
+            left.inOrderPrint();
+        System.out.println(val);
+        if (right != null)
+            right.inOrderPrint();
+    }
+
+
 }
 
 class Vertex {

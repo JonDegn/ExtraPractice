@@ -2,6 +2,7 @@ package com.practice.graphs;
 
 import org.jgrapht.DirectedGraph;
 import org.jgrapht.graph.DefaultEdge;
+import org.jgrapht.graph.MaskFunctor;
 import org.jgrapht.graph.SimpleDirectedGraph;
 import org.junit.Assert;
 import org.junit.Test;
@@ -39,6 +40,12 @@ public class GraphProblemsTest {
         Assert.assertTrue(GraphProblems.searchBFS(vertex1, vertex4, g));
         Assert.assertTrue(GraphProblems.searchBFS(vertex2, vertex1, g));
         Assert.assertFalse(GraphProblems.searchBFS(vertex4, vertex3, g));
+    }
+
+    @Test
+    public void testCreateMinimalBST() {
+        BinaryNode minimalBST = GraphProblems.createMinimalBST(new int[]{1, 2, 3, 4, 5, 6, 7});
+        minimalBST.inOrderPrint();
     }
 
 }
