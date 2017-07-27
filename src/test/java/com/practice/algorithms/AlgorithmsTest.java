@@ -141,4 +141,10 @@ public class AlgorithmsTest {
         int result = Algorithms.trap(new int[]{0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1});
         Assert.assertEquals(6, result);
     }
+
+    @Test
+    public void testLargestPalindromeProduct() {
+        Assert.assertEquals(9, Algorithms.largestPalindrome(1));
+        Assert.assertEquals(987, Algorithms.largestPalindrome(2));
+    }
 }

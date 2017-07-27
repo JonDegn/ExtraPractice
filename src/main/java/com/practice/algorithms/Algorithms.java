@@ -447,4 +447,35 @@ public class Algorithms {
 
         return result;
     }
+
+    //    Find the largest palindrome made from the product of two n-digit numbers.
+    //    Since the result could be very large, you should return the largest palindrome mod 1337
+    static public int largestPalindrome(int n) {
+        int max = Integer.MIN_VALUE;
+        int num1, num2;
+        if (n < 1 || n > 8) return -1;
+        num1 = (int) Math.pow(10, n) - 1;
+        while (num1 >= Math.pow(10, n - 1)) {
+            num2 = num1;
+            while (num2 >= Math.pow(10, n - 1)) {
+                if (isPalindrome(num1 * num2)) {
+                    max = Math.max(num1 * num2, max);
+                }
+                num2--;
+            }
+            num1--;
+        }
+        return max % 1337;
+    }
+
+    static private boolean isPalindrome(long num) {
+        long forward = num;
+        long reverse = 0;
+        while (num > 0) {
+            long digit = num % 10;
+            reverse = reverse * 10 + digit;
+            num = num / 10;
+        }
+        return forward == reverse;
+    }
 }
