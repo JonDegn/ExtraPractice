@@ -208,4 +208,34 @@ public class Strings {
         return (s1 + s1).contains(s2);
     }
 
+    //    https://www.reddit.com/r/dailyprogrammer/comments/341c03/20150427_challenge_212_easy_r%C3%B6varspr%C3%A5ket/
+    //    Take an ordinary word and replace the consonants with the consonant doubled and with an "o" in between.
+    //    So the consonant "b" is replaced by "bob", "r" is replaced with "ror", "s" is replaced with "sos", and so on.
+    //    Vowels are left intact.
+    static String rövarspråketEncode(String str) {
+        String vowels = "AEIOUYÅÄÖ";
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < str.length(); i++) {
+            char c = str.charAt(i);
+            if (vowels.indexOf(Character.toUpperCase(c)) == -1 && (c + "").matches("(?U)[\\p{Alpha}]")) {  //consonant
+                sb.append(c).append("o").append(Character.toLowerCase(c));
+            } else {
+                sb.append(c);
+            }
+        }
+        return sb.toString();
+    }
+
+    static String rövarspråketDecode(String str) {
+        String vowels = "AEIOUYÅÄÖ";
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < str.length(); i++) {
+            char c = str.charAt(i);
+            if (vowels.indexOf(Character.toUpperCase(c)) == -1 && (c + "").matches("(?U)[\\p{Alpha}]")) {  //consonant
+                i += 2;
+            }
+            sb.append(c);
+        }
+        return sb.toString();
+    }
 }

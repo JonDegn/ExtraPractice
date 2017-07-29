@@ -78,7 +78,25 @@ public class StringsTest {
 
     @Test
     public void testIsRotation() {
-        Assert.assertTrue(Strings.isRotation("hello","lohel"));
-        Assert.assertFalse(Strings.isRotation("hello","lohle"));
+        Assert.assertTrue(Strings.isRotation("hello", "lohel"));
+        Assert.assertFalse(Strings.isRotation("hello", "lohle"));
     }
+
+    @Test
+    public void testRövarspråketDecode() {
+        Assert.assertEquals("Jag talar Rövarspråket!", Strings.rövarspråketDecode("Jojagog totalolaror Rorövovarorsospoproråkoketot!"));
+        Assert.assertEquals("I'm speaking Robber's language!", Strings.rövarspråketDecode("I'mom sospopeakokinongog Rorobobboberor'sos lolanongoguagoge!"));
+        Assert.assertEquals("Tre Kronor är världens bästa ishockeylag.", Strings.rövarspråketDecode("Totrore Kokrorononoror äror vovärorloldodenonsos bobäsostota isoshohocockokeylolagog."));
+        Assert.assertEquals("Vår kung är coolare än er kung.", Strings.rövarspråketDecode("Vovåror kokunongog äror cocoololarore änon eror kokunongog."));
+    }
+
+    @Test
+    public void testRövarspråketEncode() {
+        Assert.assertEquals("Jojagog totalolaror Rorövovarorsospoproråkoketot!", Strings.rövarspråketEncode("Jag talar Rövarspråket!"));
+        Assert.assertEquals("I'mom sospopeakokinongog Rorobobboberor'sos lolanongoguagoge!", Strings.rövarspråketEncode("I'm speaking Robber's language!"));
+        Assert.assertEquals("Totrore Kokrorononoror äror vovärorloldodenonsos bobäsostota isoshohocockokeylolagog.", Strings.rövarspråketEncode("Tre Kronor är världens bästa ishockeylag."));
+        Assert.assertEquals("Vovåror kokunongog äror cocoololarore änon eror kokunongog.", Strings.rövarspråketEncode("Vår kung är coolare än er kung."));
+    }
+
+
 }
