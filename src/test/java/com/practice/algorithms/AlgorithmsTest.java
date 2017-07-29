@@ -147,4 +147,10 @@ public class AlgorithmsTest {
         Assert.assertEquals(9, Algorithms.largestPalindrome(1));
         Assert.assertEquals(987, Algorithms.largestPalindrome(2));
     }
+
+    @Test
+    public void testThreesGame() {
+        Algorithms.threesGame(100);
+        Algorithms.threesGame(31337357);
+    }
 }

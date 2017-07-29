@@ -478,4 +478,25 @@ public class Algorithms {
         }
         return forward == reverse;
     }
+
+    //    https://www.reddit.com/r/dailyprogrammer/comments/3r7wxz/20151102_challenge_239_easy_a_game_of_threes/
+    //    Repeatedly do the following:
+    //    If the number is divisible by 3, divide it by 3.
+    //    If it's not, either add 1 or subtract 1 (to make it divisible by 3), then divide it by 3.
+    //    The game stops when you reach "1".
+    static void threesGame(int num) {
+        System.out.print(num);
+        if (num == 1) return;
+
+        if (num % 3 == 0) {
+            System.out.println(" 0");
+            threesGame(num / 3);
+        } else if ((num + 1) % 3 == 0) {
+            System.out.println(" 1");
+            threesGame((num + 1) / 3);
+        } else {
+            System.out.println(" -1");
+            threesGame((num - 1) / 3);
+        }
+    }
 }
