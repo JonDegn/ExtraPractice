@@ -98,5 +98,11 @@ public class StringsTest {
         Assert.assertEquals("Vovåror kokunongog äror cocoololarore änon eror kokunongog.", Strings.rövarspråketEncode("Vår kung är coolare än er kung."));
     }
 
+    @Test
+    public void testIsValidISBN(){
+        Assert.assertTrue(Strings.isValidISBN("0-7475-3269-9"));
+        Assert.assertTrue(Strings.isValidISBN("156881111X"));
+    }
+
 
 }

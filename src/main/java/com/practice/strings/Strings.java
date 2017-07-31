@@ -238,4 +238,22 @@ public class Strings {
         }
         return sb.toString();
     }
+
+    //    obtain the sum of 10 times the first digit, 9 times the second digit, 8 times the third digit... all the way
+    //    till you add 1 times the last digit. If the sum leaves no remainder when divided by 11 the code is a valid ISBN.
+    //    For the cases where the last digit has to equal to ten, the last digit is written as X.
+    static boolean isValidISBN(String isbn) {
+        String cleaned = isbn.replaceAll("-", "");
+        if (cleaned.length() != 10) return false;
+
+        int total = 0;
+        try {
+            for (int i = 0, mult = 10; i < 10; i++, mult--) {
+                total += mult * ((i == 9 && cleaned.charAt(i) == 'X') ? 10 : Integer.parseInt(cleaned.charAt(i) + ""));
+            }
+        } catch (NumberFormatException e) {
+            return false;
+        }
+        return total % 11 == 0;
+    }
 }
