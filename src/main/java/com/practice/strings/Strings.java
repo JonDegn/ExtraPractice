@@ -256,4 +256,18 @@ public class Strings {
         }
         return total % 11 == 0;
     }
+
+    //    https://www.reddit.com/r/dailyprogrammer/comments/5hy8sm/20161212_challenge_295_easy_letter_by_letter
+    //    Change a sentence to another sentence, letter by letter.
+    //    The sentences will always have the same length.
+    static void letterByLetter(String w1, String w2) {
+        if (w1.length() != w2.length()) return;
+
+        for (int i = 0; i < w1.length(); i++) {
+            if (w1.charAt(i) != w2.charAt(i)) {
+                System.out.println(w2.substring(0, i) + w1.substring(i));
+            }
+        }
+        System.out.println(w2);
+    }
 }

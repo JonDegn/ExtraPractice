@@ -104,5 +104,10 @@ public class StringsTest {
         Assert.assertTrue(Strings.isValidISBN("156881111X"));
     }
 
-
+    @Test
+    public void testLetterByLetter(){
+        Strings.letterByLetter("floor", "brake");
+        Strings.letterByLetter("wood", "book");
+        Strings.letterByLetter("a fall to the floor", "braking the door in");
+    }
 }
