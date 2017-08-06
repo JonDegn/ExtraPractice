@@ -318,4 +318,19 @@ public class Strings {
         }
         return oneRowWords.toArray(new String[oneRowWords.size()]);
     }
+
+    //    https://leetcode.com/problems/reverse-words-in-a-string-iii/description/
+    //    Given a string, you need to reverse the order of characters in each word within a sentence while still
+    //    preserving whitespace and initial word order.
+    static String reverseWords(String s) {
+        String[] words = s.split(" ");
+        StringBuilder sb = new StringBuilder();
+        sb.append(new StringBuilder(words[0]).reverse());
+        for (int i = 1; i < words.length; i++) {
+            sb.append(" ");
+            sb.append(new StringBuilder(words[i]).reverse());
+        }
+        return sb.toString();
+    }
+
 }

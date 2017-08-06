@@ -120,4 +120,9 @@ public class StringsTest {
         String[] input2 = {"Aasdfghjkl", "Qwertyuiop", "zZxcvbnm"};
         Assert.assertArrayEquals(input2, Strings.findWords(input2));
     }
+
+    @Test
+    public void testReverseWords(){
+        Assert.assertEquals("s'teL ekat edoCteeL tsetnoc", Strings.reverseWords("Let's take LeetCode contest"));
+    }
 }
