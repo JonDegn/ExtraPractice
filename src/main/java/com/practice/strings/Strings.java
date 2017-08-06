@@ -1,9 +1,7 @@
 package com.practice.strings;
 
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 public class Strings {
 
@@ -269,5 +267,55 @@ public class Strings {
             }
         }
         System.out.println(w2);
+    }
+
+    static Map<Character, Integer> keysToRow;
+
+    static {
+        keysToRow = new HashMap<>(26);
+        keysToRow.put('q', 1);
+        keysToRow.put('w', 1);
+        keysToRow.put('e', 1);
+        keysToRow.put('r', 1);
+        keysToRow.put('t', 1);
+        keysToRow.put('y', 1);
+        keysToRow.put('u', 1);
+        keysToRow.put('i', 1);
+        keysToRow.put('o', 1);
+        keysToRow.put('p', 1);
+
+        keysToRow.put('a', 2);
+        keysToRow.put('s', 2);
+        keysToRow.put('d', 2);
+        keysToRow.put('f', 2);
+        keysToRow.put('g', 2);
+        keysToRow.put('h', 2);
+        keysToRow.put('j', 2);
+        keysToRow.put('k', 2);
+        keysToRow.put('l', 2);
+
+        keysToRow.put('z', 3);
+        keysToRow.put('x', 3);
+        keysToRow.put('c', 3);
+        keysToRow.put('v', 3);
+        keysToRow.put('b', 3);
+        keysToRow.put('n', 3);
+        keysToRow.put('m', 3);
+    }
+
+    //    https://leetcode.com/problems/keyboard-row/description/
+    //    Given a List of words, return the words that can be typed using letters of alphabet on only one row's of
+    //    American keyboard.
+    static String[] findWords(String[] words) {
+        List<String> oneRowWords = new ArrayList<>();
+        outer:
+        for (String w : words) {
+            int row = keysToRow.get(Character.toLowerCase(w.charAt(0)));
+            for (int i = 1; i < w.length(); i++) {
+                if (keysToRow.get(Character.toLowerCase(w.charAt(i))) != row) continue outer;
+            }
+            oneRowWords.add(w);
+        }
+        return oneRowWords.toArray(new String[oneRowWords.size()]);
     }
 }

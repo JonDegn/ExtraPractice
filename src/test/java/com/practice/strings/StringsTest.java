@@ -99,15 +99,25 @@ public class StringsTest {
     }
 
     @Test
-    public void testIsValidISBN(){
+    public void testIsValidISBN() {
         Assert.assertTrue(Strings.isValidISBN("0-7475-3269-9"));
         Assert.assertTrue(Strings.isValidISBN("156881111X"));
     }
 
     @Test
-    public void testLetterByLetter(){
+    public void testLetterByLetter() {
         Strings.letterByLetter("floor", "brake");
         Strings.letterByLetter("wood", "book");
         Strings.letterByLetter("a fall to the floor", "braking the door in");
+    }
+
+    @Test
+    public void testFindWords() {
+        String[] input1 = new String[]{"Hello", "Alaska", "Dad", "Peace"};
+        String[] result1 = {"Alaska", "Dad"};
+        Assert.assertArrayEquals(result1, Strings.findWords(input1));
+
+        String[] input2 = {"Aasdfghjkl", "Qwertyuiop", "zZxcvbnm"};
+        Assert.assertArrayEquals(input2, Strings.findWords(input2));
     }
 }
