@@ -118,9 +118,14 @@ public class ArrayProblemsTest {
 
     @Test
     public void testFindMedianSortedArrays() {
-        Assert.assertEquals(2.5, ArrayProblems.findMedianSortedArrays(new int[]{1, 2, 3, 4}, new int[]{1, 2, 3, 4}),0.05);
-        Assert.assertEquals(5, ArrayProblems.findMedianSortedArrays(new int[]{5,6,7,8,9}, new int[]{1, 2, 3, 4}),0.05);
-        Assert.assertEquals(2.5, ArrayProblems.findMedianSortedArrays(new int[]{}, new int[]{1, 2, 3, 4}),0.05);
+        Assert.assertEquals(2.5, ArrayProblems.findMedianSortedArrays(new int[]{1, 2, 3, 4}, new int[]{1, 2, 3, 4}), 0.05);
+        Assert.assertEquals(5, ArrayProblems.findMedianSortedArrays(new int[]{5, 6, 7, 8, 9}, new int[]{1, 2, 3, 4}), 0.05);
+        Assert.assertEquals(2.5, ArrayProblems.findMedianSortedArrays(new int[]{}, new int[]{1, 2, 3, 4}), 0.05);
+    }
+
+    @Test
+    public void testArrayPairSum() {
+        Assert.assertEquals(4, ArrayProblems.arrayPairSum(new int[]{1, 4, 3, 2}));
     }
 
 }
