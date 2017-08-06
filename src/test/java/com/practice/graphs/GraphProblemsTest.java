@@ -2,10 +2,12 @@ package com.practice.graphs;
 
 import org.jgrapht.DirectedGraph;
 import org.jgrapht.graph.DefaultEdge;
-import org.jgrapht.graph.MaskFunctor;
 import org.jgrapht.graph.SimpleDirectedGraph;
 import org.junit.Assert;
 import org.junit.Test;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by jonathondegn on 7/25/17.
@@ -46,6 +48,51 @@ public class GraphProblemsTest {
     public void testCreateMinimalBST() {
         BinaryNode minimalBST = GraphProblems.createMinimalBST(new int[]{1, 2, 3, 4, 5, 6, 7});
         minimalBST.inOrderPrint();
+    }
+
+    @Test
+    public void testMergeTrees() {
+        List<Integer> list = new ArrayList<>();
+        list.add(1);
+        list.add(3);
+        list.add(2);
+        list.add(5);
+
+        List<Integer> list2 = new ArrayList<>();
+        list2.add(2);
+        list2.add(1);
+        list2.add(3);
+        list2.add(null);
+        list2.add(4);
+        list2.add(null);
+        list2.add(7);
+        GraphProblems.mergeTrees(createTree(list), createTree(list2)).inOrderPrint();
+    }
+
+    private BinaryNode createTree(List<Integer> nums) {
+        BinaryNode root = new BinaryNode(nums.remove(0));
+        while (nums.size() != 0) createChildren(root, nums);
+        return root;
+    }
+
+    private void createChildren(BinaryNode node, List<Integer> nums) {
+        if (nums.size() == 0) return;
+        if (node == null) return;
+
+        if (node.left != null) {
+            createChildren(node.left, nums);
+        } else {
+            Integer val = nums.remove(0);
+            node.left = val != null ? new BinaryNode(val) : null;
+        }
+        if (nums.size() == 0) return;
+
+        if (node.right != null) {
+            createChildren(node.right, nums);
+        } else {
+            Integer val = nums.remove(0);
+            node.right = val != null ? new BinaryNode(val) : null;
+        }
     }
 
 }
