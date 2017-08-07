@@ -308,9 +308,34 @@ public class ArrayProblems {
     static int arrayPairSum(int[] nums) {
         Arrays.sort(nums);
         int result = 0;
-        for (int i = 0; i < nums.length; i+=2) {
-            result += (Math.min(nums[i],nums[i+1]));
+        for (int i = 0; i < nums.length; i += 2) {
+            result += (Math.min(nums[i], nums[i + 1]));
         }
         return result;
+    }
+
+    //    https://leetcode.com/problems/reshape-the-matrix/description/
+    //    You're given a matrix represented by a two-dimensional array, and two positive integers r and c representing
+    //    the row number and column number of the wanted reshaped matrix, respectively.
+    //    The reshaped matrix need to be filled with all the elements of the original matrix in the same row-traversing
+    //    order as they were.
+    //    If the 'reshape' operation with given parameters is possible and legal, output the new reshaped matrix;
+    //    Otherwise, output the original matrix.
+    static int[][] matrixReshape(int[][] nums, int r, int c) {
+        if (nums.length == 0 || nums.length * nums[0].length != r * c) return nums;
+        int[][] newMatrix = new int[r][c];
+        int rows = 0, cols = 0;
+
+        for (int i = 0; i < nums.length; i++) {
+            for (int j = 0; j < nums[0].length; j++) {
+                newMatrix[rows][cols] = nums[i][j];
+                cols++;
+                if (cols == c) {
+                    rows++;
+                    cols = 0;
+                }
+            }
+        }
+        return newMatrix;
     }
 }

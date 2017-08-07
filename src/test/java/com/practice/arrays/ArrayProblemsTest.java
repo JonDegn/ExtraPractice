@@ -128,4 +128,13 @@ public class ArrayProblemsTest {
         Assert.assertEquals(4, ArrayProblems.arrayPairSum(new int[]{1, 4, 3, 2}));
     }
 
+    @Test
+    public void testMatrixReshape() {
+        int[][] matrix = new int[][]{new int[]{1, 2}, new int[]{3, 4}};
+        int[][] result = new int[][]{new int[]{1, 2, 3, 4}};
+
+        Assert.assertArrayEquals(result, ArrayProblems.matrixReshape(matrix, 1, 4));
+        Assert.assertArrayEquals(matrix, ArrayProblems.matrixReshape(matrix, 2, 4));
+    }
+
 }
