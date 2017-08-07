@@ -2,6 +2,7 @@ package com.practice.algorithms;
 
 import java.util.*;
 import java.util.function.Supplier;
+import java.util.stream.Collectors;
 
 /**
  * Created by jonathondegn on 6/29/17.
@@ -498,5 +499,14 @@ public class Algorithms {
             System.out.println(" -1");
             threesGame((num - 1) / 3);
         }
+    }
+
+    //    https://leetcode.com/problems/distribute-candies/description/
+    //    Given an integer array with even length, where different numbers in this array represent different kinds of
+    //    candies. Each number means one candy of the corresponding kind. You need to distribute these candies equally
+    //    in number to brother and sister. Return the maximum number of kinds of candies the sister could gain.
+    static int distributeCandies(int[] candies) {
+        Set<Integer> candySet = Arrays.stream(candies).boxed().collect(Collectors.toSet());
+        return Math.min(candySet.size(), candies.length / 2);
     }
 }

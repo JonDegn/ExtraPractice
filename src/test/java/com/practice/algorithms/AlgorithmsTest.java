@@ -153,4 +153,10 @@ public class AlgorithmsTest {
         Algorithms.threesGame(100);
         Algorithms.threesGame(31337357);
     }
+
+    @Test
+    public void testDistributeCandies() {
+        Assert.assertEquals(3, Algorithms.distributeCandies(new int[]{1, 1, 2, 2, 3, 3}));
+        Assert.assertEquals(2, Algorithms.distributeCandies(new int[]{1, 1, 2, 3}));
+    }
 }
