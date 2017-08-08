@@ -128,8 +128,8 @@ public class ArrayProblemsTest {
 
     @Test
     public void testMatrixReshape() {
-        int[][] matrix = new int[][]{new int[]{1, 2}, new int[]{3, 4}};
-        int[][] result = new int[][]{new int[]{1, 2, 3, 4}};
+        int[][] matrix = {{1, 2}, {3, 4}};
+        int[][] result = {{1, 2, 3, 4}};
 
         Assert.assertArrayEquals(result, ArrayProblems.matrixReshape(matrix, 1, 4));
         Assert.assertArrayEquals(matrix, ArrayProblems.matrixReshape(matrix, 2, 4));
@@ -137,8 +137,21 @@ public class ArrayProblemsTest {
 
     @Test
     public void testIslandPerimeter() {
-        int[][] island = new int[][]{{0, 1, 0, 0}, {1, 1, 1, 0}, {0, 1, 0, 0}, {1, 1, 0, 0}};
+        int[][] island = {{0, 1, 0, 0}, {1, 1, 1, 0}, {0, 1, 0, 0}, {1, 1, 0, 0}};
         Assert.assertEquals(16, ArrayProblems.islandPerimeter(island));
+    }
+
+    @Test
+    public void testNextGreaterElement() {
+        int[] nums1 = {4, 1, 2};
+        int[] nums2 = {1, 3, 4, 2};
+        int[] result = {-1, 3, -1};
+        Assert.assertArrayEquals(result, ArrayProblems.nextGreaterElement(nums1, nums2));
+
+        nums1 = new int[]{2, 4};
+        nums2 = new int[]{1, 2, 3, 4};
+        result = new int[]{3, -1};
+        Assert.assertArrayEquals(result, ArrayProblems.nextGreaterElement(nums1, nums2));
     }
 
 }
