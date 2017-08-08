@@ -5,8 +5,6 @@ import org.junit.Test;
 
 import java.util.List;
 
-import static org.junit.Assert.*;
-
 /**
  * Created by jonathondegn on 7/11/17.
  */
@@ -135,6 +133,12 @@ public class ArrayProblemsTest {
 
         Assert.assertArrayEquals(result, ArrayProblems.matrixReshape(matrix, 1, 4));
         Assert.assertArrayEquals(matrix, ArrayProblems.matrixReshape(matrix, 2, 4));
+    }
+
+    @Test
+    public void testIslandPerimeter() {
+        int[][] island = new int[][]{{0, 1, 0, 0}, {1, 1, 1, 0}, {0, 1, 0, 0}, {1, 1, 0, 0}};
+        Assert.assertEquals(16, ArrayProblems.islandPerimeter(island));
     }
 
 }
