@@ -69,6 +69,25 @@ public class GraphProblemsTest {
         GraphProblems.mergeTrees(createTree(list), createTree(list2)).inOrderPrint();
     }
 
+    @Test
+    public void testAverageOfLevels() {
+        List<Integer> list = new ArrayList<>();
+        list.add(3);
+        list.add(9);
+        list.add(20);
+        list.add(null);
+        list.add(null);
+        list.add(15);
+        list.add(7);
+        List<Double> result = GraphProblems.averageOfLevels(createTree(list));
+        Assert.assertEquals(3, result.size());
+        Assert.assertEquals(3.0, result.get(0), 0.01);
+        Assert.assertEquals(14.5, result.get(1), 0.01);
+        Assert.assertEquals(11.0, result.get(2), 0.01);
+    }
+
+    // helper functions
+
     private BinaryNode createTree(List<Integer> nums) {
         BinaryNode root = new BinaryNode(nums.remove(0));
         while (nums.size() != 0) createChildren(root, nums);

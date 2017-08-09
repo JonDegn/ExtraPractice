@@ -1,12 +1,10 @@
 package com.practice.graphs;
 
+import com.practice.linkedlist.Tuple;
 import org.jgrapht.DirectedGraph;
 import org.jgrapht.graph.DefaultEdge;
 
-import java.util.ArrayDeque;
-import java.util.Queue;
-import java.util.Set;
-import java.util.Stack;
+import java.util.*;
 
 public class GraphProblems {
 
@@ -83,6 +81,54 @@ public class GraphProblems {
         t1.left = mergeTrees(t1.left, t2.left);
         t1.right = mergeTrees(t1.right, t2.right);
         return t1;
+    }
+
+    //    https://leetcode.com/problems/average-of-levels-in-binary-tree/description/
+    //    Given a non-empty binary tree, return the average value of the nodes on each level in the form of an array.
+    static List<Double> averageOfLevels(BinaryNode root) {
+        Map<Integer, Tuple<Long, Integer>> map = new HashMap<>();
+        List<Double> averages = new ArrayList<>();
+
+        if (root != null) getByLevel(root, 0, map);
+        int level = 0;
+        while (map.containsKey(level)) {
+            Tuple<Long, Integer> totalNum = map.get(level);
+            averages.add((double) totalNum.x / totalNum.y);
+            level++;
+        }
+        return averages;
+
+        //using queue
+//        List<Double> result = new ArrayList<>();
+//        Queue<BinaryNode> queue = new LinkedList<>();
+//        queue.add(root);
+//        while (!queue.isEmpty()) {
+//            long sum = 0, count = 0;
+//            Queue<BinaryNode> temp = new LinkedList<>();
+//            while (!queue.isEmpty()) {
+//                BinaryNode n = queue.remove();
+//                sum += n.val;
+//                count++;
+//                if (n.left != null) temp.add(n.left);
+//                if (n.right != null) temp.add(n.right);
+//            }
+//            queue = temp;
+//            result.add(sum * 1.0 / count);
+//        }
+//        return result;
+    }
+
+    static void getByLevel(BinaryNode node, int level, Map<Integer, Tuple<Long, Integer>> map) {
+        if (node.left != null) getByLevel(node.left, level + 1, map);
+        if (node.right != null) getByLevel(node.right, level + 1, map);
+        if (map.containsKey(level)) {
+            Tuple<Long, Integer> totalNum = map.get(level);
+            totalNum.x += node.val;
+            totalNum.y++;
+        } else {
+            map.put(level, new Tuple<>((long)node.val, 1));
+        }
+
     }
 }
 
