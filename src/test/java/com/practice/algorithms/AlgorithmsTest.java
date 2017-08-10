@@ -159,4 +159,14 @@ public class AlgorithmsTest {
         Assert.assertEquals(3, Algorithms.distributeCandies(new int[]{1, 1, 2, 2, 3, 3}));
         Assert.assertEquals(2, Algorithms.distributeCandies(new int[]{1, 1, 2, 3}));
     }
+
+    @Test
+    public void testCanWinNim(){
+        Assert.assertTrue(Algorithms.canWinNim(1));
+        Assert.assertTrue(Algorithms.canWinNim(3));
+        Assert.assertTrue(Algorithms.canWinNim(5));
+        Assert.assertTrue(Algorithms.canWinNim(6));
+        Assert.assertFalse(Algorithms.canWinNim(8));
+        Assert.assertFalse(Algorithms.canWinNim(4));
+    }
 }
