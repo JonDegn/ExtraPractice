@@ -161,4 +161,12 @@ public class ArrayProblemsTest {
         Assert.assertEquals(1,ArrayProblems.singleNumber(new int[]{2,3,2,3,1}));
     }
 
+    @Test
+    public void testFindMaxConsecutiveOnes(){
+        Assert.assertEquals(1,ArrayProblems.findMaxConsecutiveOnes(new int[]{1}));
+        Assert.assertEquals(0,ArrayProblems.findMaxConsecutiveOnes(new int[]{0,0,0}));
+        Assert.assertEquals(3,ArrayProblems.findMaxConsecutiveOnes(new int[]{1,0,0,1,1,0,1,1,1}));
+        Assert.assertEquals(3,ArrayProblems.findMaxConsecutiveOnes(new int[]{1,1,0,1,1,1}));
+    }
+
 }

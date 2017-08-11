@@ -416,4 +416,20 @@ public class ArrayProblems {
 //        }
 //        return -1;
     }
+
+    //    https://leetcode.com/problems/max-consecutive-ones/description/
+    //    Given a binary array, find the maximum number of consecutive 1s in this array.
+    static int findMaxConsecutiveOnes(int[] nums) {
+        int max = 0;
+        int curRun = 0;
+        for (int i : nums) {
+            if (i == 0) {
+                max = Math.max(max, curRun);
+                curRun = 0;
+            } else {
+                curRun++;
+            }
+        }
+        return Math.max(max, curRun);
+    }
 }
