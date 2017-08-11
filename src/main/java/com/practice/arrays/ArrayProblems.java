@@ -399,4 +399,21 @@ public class ArrayProblems {
         }
         return findNums;
     }
+
+    //    https://leetcode.com/problems/single-number/description/
+    //    Given an array of integers, every element appears twice except for one. Find that single one
+    static int singleNumber(int[] nums) {
+        int result = 0;
+        for (int num : nums) {
+            result ^= num;
+        }
+        return result;
+
+//        if (nums.length == 1) return nums[0];
+//        Arrays.sort(nums);
+//        for (int i = 0; i < nums.length; i += 2) {
+//            if (nums[i] != nums[i + 1]) return nums[i];
+//        }
+//        return -1;
+    }
 }

@@ -154,4 +154,11 @@ public class ArrayProblemsTest {
         Assert.assertArrayEquals(result, ArrayProblems.nextGreaterElement(nums1, nums2));
     }
 
+    @Test
+    public void testSingleNumber(){
+        Assert.assertEquals(1,ArrayProblems.singleNumber(new int[]{1}));
+        Assert.assertEquals(1,ArrayProblems.singleNumber(new int[]{2,1,2}));
+        Assert.assertEquals(1,ArrayProblems.singleNumber(new int[]{2,3,2,3,1}));
+    }
+
 }
