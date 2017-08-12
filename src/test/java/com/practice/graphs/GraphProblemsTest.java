@@ -86,6 +86,20 @@ public class GraphProblemsTest {
         Assert.assertEquals(11.0, result.get(2), 0.01);
     }
 
+    @Test
+    public void testMaxDepth(){
+        List<Integer> list = new ArrayList<>();
+        list.add(3);
+        list.add(9);
+        list.add(20);
+        list.add(null);
+        list.add(null);
+        list.add(15);
+        list.add(7);
+
+        Assert.assertEquals(3, GraphProblems.maxDepth(createTree(list)));
+    }
+
     // helper functions
 
     private BinaryNode createTree(List<Integer> nums) {

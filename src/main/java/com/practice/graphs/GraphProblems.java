@@ -126,9 +126,17 @@ public class GraphProblems {
             totalNum.x += node.val;
             totalNum.y++;
         } else {
-            map.put(level, new Tuple<>((long)node.val, 1));
+            map.put(level, new Tuple<>((long) node.val, 1));
         }
 
+    }
+
+    //    https://leetcode.com/problems/maximum-depth-of-binary-tree/description/
+    //    Given a binary tree, find its maximum depth.
+    //    The maximum depth is the number of nodes along the longest path from the root node down to the farthest leaf node.
+    static int maxDepth(BinaryNode root) {
+        if (root == null) return 0;
+        return 1 + Math.max(maxDepth(root.left), maxDepth(root.right));
     }
 }
 
