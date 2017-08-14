@@ -122,7 +122,19 @@ public class StringsTest {
     }
 
     @Test
-    public void testReverseWords(){
+    public void testReverseWords() {
         Assert.assertEquals("s'teL ekat edoCteeL tsetnoc", Strings.reverseWords("Let's take LeetCode contest"));
     }
+
+    @Test
+    public void testDetectCapitalUse() {
+        Assert.assertTrue(Strings.detectCapitalUse("USA"));
+        Assert.assertTrue(Strings.detectCapitalUse("leetcode"));
+        Assert.assertTrue(Strings.detectCapitalUse("Google"));
+        Assert.assertTrue(Strings.detectCapitalUse("Hi"));
+        Assert.assertTrue(Strings.detectCapitalUse("I"));
+        Assert.assertFalse(Strings.detectCapitalUse("FlaG"));
+        Assert.assertFalse(Strings.detectCapitalUse("hELLO"));
+    }
+
 }
