@@ -137,4 +137,10 @@ public class StringsTest {
         Assert.assertFalse(Strings.detectCapitalUse("hELLO"));
     }
 
+    @Test
+    public void testCanConstruct(){
+        Assert.assertFalse(Strings.canConstruct("a","b"));
+        Assert.assertFalse(Strings.canConstruct("aa","ab"));
+        Assert.assertTrue(Strings.canConstruct("aa","aab"));
+    }
 }

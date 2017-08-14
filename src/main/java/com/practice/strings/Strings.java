@@ -351,4 +351,28 @@ public class Strings {
         return Character.isUpperCase(word.charAt(0)) || !cap;
     }
 
+    //    https://leetcode.com/problems/ransom-note/description/
+    //    Given an arbitrary ransom note string and another string containing letters from all the magazines, write a
+    //    function that will return true if the ransom note can be constructed from the magazines ; otherwise, it will return false.
+    //    Each letter in the magazine string can only be used once in your ransom note.
+    static boolean canConstruct(String ransomNote, String magazine) {
+        Map<Character, Integer> charMap = new HashMap<>();
+        for (char c : magazine.toCharArray()) {
+            if (charMap.containsKey(c)) {
+                charMap.put(c, charMap.get(c) + 1);
+            } else {
+                charMap.put(c, 1);
+            }
+        }
+        for (char c : ransomNote.toCharArray()) {
+            if (charMap.containsKey(c) && charMap.get(c)>0) {
+                charMap.put(c, charMap.get(c) - 1);
+            } else {
+                return false;
+            }
+        }
+        return true;
+
+    }
+
 }
