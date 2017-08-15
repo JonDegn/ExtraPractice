@@ -169,4 +169,13 @@ public class ArrayProblemsTest {
         Assert.assertEquals(3,ArrayProblems.findMaxConsecutiveOnes(new int[]{1,1,0,1,1,1}));
     }
 
+    @Test
+    public void testFindDisappearedNumbers() {
+        int[] nums1 = {4,3,2,7,8,2,3,1};
+
+        List<Integer> result = ArrayProblems.findDisappearedNumbers(nums1);
+        Assert.assertEquals(5, result.get(0).longValue());
+        Assert.assertEquals(6, result.get(1).longValue());
+    }
+
 }

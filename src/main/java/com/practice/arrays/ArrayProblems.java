@@ -432,4 +432,20 @@ public class ArrayProblems {
         }
         return Math.max(max, curRun);
     }
+
+    //    https://leetcode.com/problems/find-all-numbers-disappeared-in-an-array/description/
+    //    Given an array of integers where 1 ≤ a[i] ≤ n (n = size of array), some elements appear twice and others appear once.
+    //    Find all the elements of [1, n] inclusive that do not appear in this array.
+    static List<Integer> findDisappearedNumbers(int[] nums) {
+        List<Integer> result = new ArrayList<>(nums.length);
+        boolean[] found = new boolean[nums.length];
+        for (int i : nums) {
+            found[i-1] = true;
+        }
+        for (int i = 0; i < found.length; i++) {
+            if(!found[i])
+                result.add(i+1);
+        }
+        return result;
+    }
 }
