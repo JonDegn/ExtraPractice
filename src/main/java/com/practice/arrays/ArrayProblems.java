@@ -438,13 +438,27 @@ public class ArrayProblems {
     //    Find all the elements of [1, n] inclusive that do not appear in this array.
     static List<Integer> findDisappearedNumbers(int[] nums) {
         List<Integer> result = new ArrayList<>(nums.length);
-        boolean[] found = new boolean[nums.length];
-        for (int i : nums) {
-            found[i-1] = true;
+        //using extra space
+//        boolean[] found = new boolean[nums.length];
+//        for (int i : nums) {
+//            found[i-1] = true;
+//        }
+//        for (int i = 0; i < found.length; i++) {
+//            if(!found[i])
+//                result.add(i+1);
+//        }
+        // no extra space
+        // indices are set to negative when they are found
+        for (int i = 0; i < nums.length; i++) {
+            int val = Math.abs(nums[i]) - 1;
+            if (nums[val] > 0)
+                nums[val] = -nums[val];
         }
-        for (int i = 0; i < found.length; i++) {
-            if(!found[i])
-                result.add(i+1);
+        // all non-negative indices are not in the array
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] > 0) {
+                result.add(i + 1);
+            }
         }
         return result;
     }
