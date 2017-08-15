@@ -519,4 +519,20 @@ public class Algorithms {
     static boolean canWinNim(int n) {
         return n % 4 != 0;
     }
+
+    //    https://leetcode.com/problems/add-digits/description/
+    //    Given a non-negative integer num, repeatedly add all its digits until the result has only one digit.
+    static int addDigits(int num) {
+//        while (num > 9) {
+//            int total = 0;
+//            while (num != 0) {
+//                total += num % 10;
+//                num /= 10;
+//            }
+//            num = total;
+//        }
+//        return num;
+        // O(1)
+        return 1 + (num - 1) % 9;
+    }
 }

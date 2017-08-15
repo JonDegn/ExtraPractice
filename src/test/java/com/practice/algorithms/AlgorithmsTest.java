@@ -169,4 +169,9 @@ public class AlgorithmsTest {
         Assert.assertFalse(Algorithms.canWinNim(8));
         Assert.assertFalse(Algorithms.canWinNim(4));
     }
+
+    @Test
+    public void testAddDigits(){
+        Assert.assertEquals(2,Algorithms.addDigits(38));
+    }
 }
