@@ -138,6 +138,17 @@ public class GraphProblems {
         if (root == null) return 0;
         return 1 + Math.max(maxDepth(root.left), maxDepth(root.right));
     }
+
+    //    https://leetcode.com/problems/invert-binary-tree/description/
+    //    Invert a binary tree.
+    static BinaryNode invertTree(BinaryNode root) {
+        if (root != null) {
+            BinaryNode temp = root.left;
+            root.left = invertTree(root.right);
+            root.right = invertTree(temp);
+        }
+        return root;
+    }
 }
 
 class BinaryNode {

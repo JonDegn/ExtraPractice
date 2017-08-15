@@ -100,6 +100,21 @@ public class GraphProblemsTest {
         Assert.assertEquals(3, GraphProblems.maxDepth(createTree(list)));
     }
 
+    @Test
+    public void testInvertTree() {
+        List<Integer> list = new ArrayList<>();
+        list.add(4);
+        list.add(2);
+        list.add(7);
+        list.add(1);
+        list.add(3);
+        list.add(6);
+        list.add(9);
+        BinaryNode tree = GraphProblems.invertTree(createTree(list));
+        tree.breadthFirstPrint();
+
+    }
+
     // helper functions
 
     private BinaryNode createTree(List<Integer> nums) {
