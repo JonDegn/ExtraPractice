@@ -155,27 +155,32 @@ public class ArrayProblemsTest {
     }
 
     @Test
-    public void testSingleNumber(){
-        Assert.assertEquals(1,ArrayProblems.singleNumber(new int[]{1}));
-        Assert.assertEquals(1,ArrayProblems.singleNumber(new int[]{2,1,2}));
-        Assert.assertEquals(1,ArrayProblems.singleNumber(new int[]{2,3,2,3,1}));
+    public void testSingleNumber() {
+        Assert.assertEquals(1, ArrayProblems.singleNumber(new int[]{1}));
+        Assert.assertEquals(1, ArrayProblems.singleNumber(new int[]{2, 1, 2}));
+        Assert.assertEquals(1, ArrayProblems.singleNumber(new int[]{2, 3, 2, 3, 1}));
     }
 
     @Test
-    public void testFindMaxConsecutiveOnes(){
-        Assert.assertEquals(1,ArrayProblems.findMaxConsecutiveOnes(new int[]{1}));
-        Assert.assertEquals(0,ArrayProblems.findMaxConsecutiveOnes(new int[]{0,0,0}));
-        Assert.assertEquals(3,ArrayProblems.findMaxConsecutiveOnes(new int[]{1,0,0,1,1,0,1,1,1}));
-        Assert.assertEquals(3,ArrayProblems.findMaxConsecutiveOnes(new int[]{1,1,0,1,1,1}));
+    public void testFindMaxConsecutiveOnes() {
+        Assert.assertEquals(1, ArrayProblems.findMaxConsecutiveOnes(new int[]{1}));
+        Assert.assertEquals(0, ArrayProblems.findMaxConsecutiveOnes(new int[]{0, 0, 0}));
+        Assert.assertEquals(3, ArrayProblems.findMaxConsecutiveOnes(new int[]{1, 0, 0, 1, 1, 0, 1, 1, 1}));
+        Assert.assertEquals(3, ArrayProblems.findMaxConsecutiveOnes(new int[]{1, 1, 0, 1, 1, 1}));
     }
 
     @Test
     public void testFindDisappearedNumbers() {
-        int[] nums1 = {4,3,2,7,8,2,3,1};
+        int[] nums1 = {4, 3, 2, 7, 8, 2, 3, 1};
 
         List<Integer> result = ArrayProblems.findDisappearedNumbers(nums1);
         Assert.assertEquals(5, result.get(0).longValue());
         Assert.assertEquals(6, result.get(1).longValue());
+    }
+
+    @Test
+    public void testMinMoves() {
+        Assert.assertEquals(3, ArrayProblems.minMoves(new int[]{1, 2, 3}));
     }
 
 }
