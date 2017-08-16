@@ -7,6 +7,8 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -87,7 +89,7 @@ public class GraphProblemsTest {
     }
 
     @Test
-    public void testMaxDepth(){
+    public void testMaxDepth() {
         List<Integer> list = new ArrayList<>();
         list.add(3);
         list.add(9);
@@ -113,6 +115,38 @@ public class GraphProblemsTest {
         BinaryNode tree = GraphProblems.invertTree(createTree(list));
         tree.breadthFirstPrint();
 
+    }
+
+    @Test
+    public void testFindTarget() {
+        List<Integer> list = new LinkedList<>(Arrays.asList(5, 3, 6, 2, 4, null, 7));
+        List<Integer> list2 = new LinkedList<>(Arrays.asList(5, 3, 6, 2, 4, null, 7));
+
+        Assert.assertTrue(GraphProblems.findTarget(createTree(list), 9));
+        Assert.assertFalse(GraphProblems.findTarget(createTree(list2), 28));
+    }
+
+    @Test
+    public void testConvertBST(){
+        List<Integer> list = new LinkedList<>(Arrays.asList(5, 2, 13));
+        BinaryNode node = GraphProblems.convertBST(createTree(list));
+        node.inOrderPrint();
+    }
+
+    @Test
+    public void testTree2str() {
+        List<Integer> list = new LinkedList<>(Arrays.asList(1,2,3,4));
+        List<Integer> list2 = new LinkedList<>(Arrays.asList(1,2,3,null,4));
+        System.out.println(GraphProblems.tree2str(createTree(list)));
+        System.out.println(GraphProblems.tree2str(createTree(list2)));
+    }
+
+    @Test
+    public void testFindMinimumDifference(){
+        List<Integer> list = new LinkedList<>(Arrays.asList(1,null,3,null,2));
+        BinaryNode tree = createTree(list);
+        int min = GraphProblems.getMinimumDifference(tree);
+        Assert.assertEquals(1,min);
     }
 
     // helper functions

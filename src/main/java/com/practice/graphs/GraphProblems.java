@@ -149,6 +149,78 @@ public class GraphProblems {
         }
         return root;
     }
+
+    //    https://leetcode.com/problems/two-sum-iv-input-is-a-bst/description/
+    //    Given a Binary Search Tree and a target number, return true if there exist two elements in the BST such that
+    //    their sum is equal to the given target.
+    static boolean findTarget(BinaryNode root, int k) {
+        Map<Integer, Integer> map = new HashMap<>();
+        Stack<BinaryNode> stack = new Stack<>();
+        stack.push(root);
+        while (!stack.isEmpty()) {
+            BinaryNode node = stack.pop();
+            if (map.containsKey(node.val)) {
+                return true;
+            } else {
+                map.put(k - node.val, node.val);
+            }
+            if (node.left != null) stack.push(node.left);
+            if (node.right != null) stack.push(node.right);
+        }
+        return false;
+    }
+
+    //    https://leetcode.com/problems/convert-bst-to-greater-tree/description/
+    //    Given a Binary Search Tree (BST), convert it to a Greater Tree such that every key of the original BST is
+    //    changed to the original key plus sum of all keys greater than the original key in BST.
+    static BinaryNode convertBST(BinaryNode root) {
+        convertBST(root, 0);
+        return root;
+    }
+
+    private static int convertBST(BinaryNode root, int total) {
+        if (root == null) return total;
+        root.val += convertBST(root.right, total);
+        total = convertBST(root.left, root.val);
+        return total;
+    }
+
+    //    https://leetcode.com/problems/construct-string-from-binary-tree/description/
+    //    You need to construct a string consists of parenthesis and integers from a binary tree with the preorder
+    //    traversing way.
+    //    The null node needs to be represented by empty parenthesis pair "()". And you need to omit all the empty
+    //    parenthesis pairs that don't affect the one-to-one mapping relationship between the string and the original
+    //    binary tree.
+    static String tree2str(BinaryNode t) {
+        if (t == null)
+            return "";
+        if (t.left == null && t.right == null)
+            return t.val + "";
+        if (t.right == null) {
+            return t.val + "(" + tree2str(t.left) + ")";
+        }
+        return t.val + "(" + tree2str(t.left) + ")" + "(" + tree2str(t.right) + ")";
+    }
+
+
+    static BinaryNode prev;
+    static int min = Integer.MAX_VALUE;
+    //    https://leetcode.com/problems/minimum-absolute-difference-in-bst/description/
+    //    Given a binary search tree with non-negative values, find the minimum absolute difference between values of
+    //    any two nodes.
+    static int getMinimumDifference(BinaryNode root) {
+        inorder(root);
+        return min;
+    }
+
+    private static void inorder(BinaryNode node) {
+        if (node == null) return;
+        inorder(node.left);
+        if (prev != null) min = Math.min(min, node.val - prev.val);
+        prev = node;
+        inorder(node.right);
+    }
+
 }
 
 class BinaryNode {
