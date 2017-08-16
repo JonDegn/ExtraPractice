@@ -143,4 +143,9 @@ public class StringsTest {
         Assert.assertFalse(Strings.canConstruct("aa","ab"));
         Assert.assertTrue(Strings.canConstruct("aa","aab"));
     }
+
+    @Test
+    public void testFindTheDifference() {
+        Assert.assertEquals('e',Strings.findTheDifference("abcd","abcde"));
+    }
 }
