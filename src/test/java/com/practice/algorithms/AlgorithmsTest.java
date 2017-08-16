@@ -161,7 +161,7 @@ public class AlgorithmsTest {
     }
 
     @Test
-    public void testCanWinNim(){
+    public void testCanWinNim() {
         Assert.assertTrue(Algorithms.canWinNim(1));
         Assert.assertTrue(Algorithms.canWinNim(3));
         Assert.assertTrue(Algorithms.canWinNim(5));
@@ -171,7 +171,16 @@ public class AlgorithmsTest {
     }
 
     @Test
-    public void testAddDigits(){
-        Assert.assertEquals(2,Algorithms.addDigits(38));
+    public void testAddDigits() {
+        Assert.assertEquals(2, Algorithms.addDigits(38));
+    }
+
+    @Test
+    public void testConstructRectangle() {
+        Assert.assertArrayEquals(new int[]{2, 2}, Algorithms.constructRectangle(4));
+        Assert.assertArrayEquals(new int[]{3, 2}, Algorithms.constructRectangle(6));
+        Assert.assertArrayEquals(new int[]{4, 2}, Algorithms.constructRectangle(8));
+        Assert.assertArrayEquals(new int[]{3, 3}, Algorithms.constructRectangle(9));
+        Assert.assertArrayEquals(new int[]{5, 2}, Algorithms.constructRectangle(10));
     }
 }

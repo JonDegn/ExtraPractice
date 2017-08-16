@@ -535,4 +535,26 @@ public class Algorithms {
         // O(1)
         return 1 + (num - 1) % 9;
     }
+
+    //    https://leetcode.com/problems/construct-the-rectangle/description/
+    //    1. The area of the rectangular web page you designed must equal to the given target area.
+    //    2. The width W should not be larger than the length L, which means L >= W.
+    //    3. The difference between length L and width W should be as small as possible.
+    static int[] constructRectangle(int area) {
+        double sqrt = Math.sqrt(area);
+        int l = (int) Math.ceil(sqrt);
+        int w = (int) Math.floor(sqrt);
+        while (l * w != area) {
+            if (l * w > area)
+                w--;
+            else
+                l++;
+            if (l * w == 0) return new int[0];
+        }
+        return new int[]{l, w};
+
+//        int w = (int) Math.sqrt(area);
+//        while (area % w != 0) w--;
+//        return new int[]{area / w, w};
+    }
 }
