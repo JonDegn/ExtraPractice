@@ -222,14 +222,20 @@ class LinkedList {
         return fastPointer;
     }
 
-}
-
-class Tuple<X, Y> {
-    public X x;
-    public Y y;
-
-    public Tuple(X x, Y y) {
-        this.x = x;
-        this.y = y;
+//    static ListNode<Integer> prev;
+    //    https://leetcode.com/problems/reverse-linked-list/description/
+    //    Reverse a singly linked list.
+    static <T> ListNode<T> reverseList(ListNode<T> head) {
+        if (head == null) return head;
+        ListNode<T> prev = head;
+        ListNode<T> curr = head.next;
+        head.next = null;
+        while (curr != null) {
+            ListNode<T> next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = next;
+        }
+        return prev;
     }
 }

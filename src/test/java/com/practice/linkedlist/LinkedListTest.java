@@ -156,6 +156,13 @@ public class LinkedListTest {
         Assert.assertEquals(3, loopBegining.val.longValue());
     }
 
+    @Test
+    public void testReverseList() {
+        ListNode<Integer> list = arrayToLinkedList(new Integer[]{1, 2, 3, 4, 5, 6, 7});
+        ListNode<Integer> result = LinkedList.reverseList(list);
+        Assert.assertArrayEquals(new Integer[]{7, 6, 5, 4, 3, 2, 1}, linkedListToArray(result));
+    }
+
     //<editor-fold desc="Helper Functions">
     @Test
     public void testNumToLinkedList() {
