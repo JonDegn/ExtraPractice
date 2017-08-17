@@ -149,6 +149,16 @@ public class GraphProblemsTest {
         Assert.assertEquals(1,min);
     }
 
+    @Test
+    public void testDiameterOfBinaryTree() {
+        List<Integer> list = new LinkedList<>(Arrays.asList(1,2,3,4,5));
+        BinaryNode tree = createTree(list);
+        Assert.assertEquals(3,GraphProblems.diameterOfBinaryTree(tree));
+        List<Integer> list2 = new LinkedList<>(Arrays.asList(1,2));
+        BinaryNode tree2 = createTree(list2);
+        Assert.assertEquals(1,GraphProblems.diameterOfBinaryTree(tree2));
+    }
+
     // helper functions
 
     private BinaryNode createTree(List<Integer> nums) {
