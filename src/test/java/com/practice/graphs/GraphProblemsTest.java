@@ -154,6 +154,7 @@ public class GraphProblemsTest {
         List<Integer> list = new LinkedList<>(Arrays.asList(1,2,3,4,5));
         BinaryNode tree = createTree(list);
         Assert.assertEquals(3,GraphProblems.diameterOfBinaryTree(tree));
+        GraphProblems.max = 0;
         List<Integer> list2 = new LinkedList<>(Arrays.asList(1,2));
         BinaryNode tree2 = createTree(list2);
         Assert.assertEquals(1,GraphProblems.diameterOfBinaryTree(tree2));
