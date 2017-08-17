@@ -183,4 +183,9 @@ public class ArrayProblemsTest {
         Assert.assertEquals(3, ArrayProblems.minMoves(new int[]{1, 2, 3}));
     }
 
+    @Test
+    public void testMajorityElement() {
+        Assert.assertEquals(4, ArrayProblems.majorityElement(new int[]{4, 3, 3, 3, 3, 4, 2, 4, 4, 4}));
+    }
+
 }
