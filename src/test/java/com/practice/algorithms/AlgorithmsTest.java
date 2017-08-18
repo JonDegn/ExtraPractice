@@ -183,4 +183,22 @@ public class AlgorithmsTest {
         Assert.assertArrayEquals(new int[]{3, 3}, Algorithms.constructRectangle(9));
         Assert.assertArrayEquals(new int[]{5, 2}, Algorithms.constructRectangle(10));
     }
+
+    @Test
+    public void testMaxProfit() {
+        Assert.assertEquals(5, Algorithms.maxProfit(new int[]{7, 1, 5, 3, 6, 4}));
+        Assert.assertEquals(0, Algorithms.maxProfit(new int[]{7, 6, 4, 3, 1}));
+        Assert.assertEquals(3, Algorithms.maxProfit(new int[]{1, 2, 3, 4}));
+        Assert.assertEquals(21, Algorithms.maxProfit(new int[]{4, 10, 25, 2, 10}));
+    }
+
+    @Test
+    public void testClimbStairs(){
+        Assert.assertEquals(1, Algorithms.climbStairs(1));
+        Assert.assertEquals(2, Algorithms.climbStairs(2));
+        Assert.assertEquals(3, Algorithms.climbStairs(3));
+        Assert.assertEquals(5, Algorithms.climbStairs(4));
+        Assert.assertEquals(8, Algorithms.climbStairs(5));
+        Assert.assertEquals(13, Algorithms.climbStairs(6));
+    }
 }

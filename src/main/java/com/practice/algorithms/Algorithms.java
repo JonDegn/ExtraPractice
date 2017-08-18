@@ -557,4 +557,61 @@ public class Algorithms {
 //        while (area % w != 0) w--;
 //        return new int[]{area / w, w};
     }
+
+    //    https://leetcode.com/problems/best-time-to-buy-and-sell-stock/description/
+    //    Say you have an array for which the ith element is the price of a given stock on day i.
+    //    If you were only permitted to complete at most one transaction (ie, buy one and sell one share of the stock), design an algorithm to find the maximum profit.
+    static int maxProfit(int[] prices) {
+        // brute force
+//        int maxProfit = 0;
+//        for (int i = 0; i < prices.length; i++) {
+//            for (int j = i + 1; j < prices.length; j++) {
+//                maxProfit = Math.max(prices[j] - prices[i], maxProfit);
+//            }
+//        }
+//        return maxProfit;
+        //
+//        int maxCur = 0, maxSoFar = 0;
+//        for (int i = 1; i < prices.length; i++) {
+//            maxCur += prices[i] - prices[i - 1];
+//            maxCur = Math.max(0, maxCur);
+//            maxSoFar = Math.max(maxCur, maxSoFar);
+//        }
+//        return maxSoFar;
+        if (prices == null || prices.length < 2) return 0;
+        int maxProfit = 0, minPrice = prices[0];
+        for (int i = 1; i < prices.length; i++) {
+            if (prices[i] > prices[i - 1]) {
+                maxProfit = Math.max(maxProfit, prices[i] - minPrice);
+            } else {
+                minPrice = Math.min(minPrice, prices[i]);
+            }
+        }
+        return maxProfit;
+    }
+
+    static int[] cache = new int[100];
+
+    //    https://leetcode.com/problems/climbing-stairs/description/
+    //    You are climbing a stair case. It takes n steps to reach to the top.
+    //    Each time you can either climb 1 or 2 steps. In how many distinct ways can you climb to the top?
+    static int climbStairs(int n) {
+//        cache[0] = 1;
+//        cache[1] = 2;
+//        if (cache[n-1] == 0) {
+//            cache[n-1] = climbStairs(n-1) + climbStairs(n-2);
+//        }
+//        return cache[n-1];
+        // no extra space
+        if (n==1) return 1;
+        int first = 1;
+        int second = 2;
+        for (int i = 3; i <= n; i++) {
+            int third = first + second;
+            first = second;
+            second = third;
+        }
+        return second;
+    }
+
 }
