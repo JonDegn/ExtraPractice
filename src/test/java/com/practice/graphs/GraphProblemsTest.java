@@ -127,7 +127,7 @@ public class GraphProblemsTest {
     }
 
     @Test
-    public void testConvertBST(){
+    public void testConvertBST() {
         List<Integer> list = new LinkedList<>(Arrays.asList(5, 2, 13));
         BinaryNode node = GraphProblems.convertBST(createTree(list));
         node.inOrderPrint();
@@ -135,29 +135,50 @@ public class GraphProblemsTest {
 
     @Test
     public void testTree2str() {
-        List<Integer> list = new LinkedList<>(Arrays.asList(1,2,3,4));
-        List<Integer> list2 = new LinkedList<>(Arrays.asList(1,2,3,null,4));
+        List<Integer> list = new LinkedList<>(Arrays.asList(1, 2, 3, 4));
+        List<Integer> list2 = new LinkedList<>(Arrays.asList(1, 2, 3, null, 4));
         System.out.println(GraphProblems.tree2str(createTree(list)));
         System.out.println(GraphProblems.tree2str(createTree(list2)));
     }
 
     @Test
-    public void testFindMinimumDifference(){
-        List<Integer> list = new LinkedList<>(Arrays.asList(1,null,3,null,2));
+    public void testFindMinimumDifference() {
+        List<Integer> list = new LinkedList<>(Arrays.asList(1, null, 3, null, 2));
         BinaryNode tree = createTree(list);
         int min = GraphProblems.getMinimumDifference(tree);
-        Assert.assertEquals(1,min);
+        Assert.assertEquals(1, min);
     }
 
     @Test
     public void testDiameterOfBinaryTree() {
-        List<Integer> list = new LinkedList<>(Arrays.asList(1,2,3,4,5));
+        List<Integer> list = new LinkedList<>(Arrays.asList(1, 2, 3, 4, 5));
         BinaryNode tree = createTree(list);
-        Assert.assertEquals(3,GraphProblems.diameterOfBinaryTree(tree));
+        Assert.assertEquals(3, GraphProblems.diameterOfBinaryTree(tree));
         GraphProblems.max = 0;
-        List<Integer> list2 = new LinkedList<>(Arrays.asList(1,2));
+        List<Integer> list2 = new LinkedList<>(Arrays.asList(1, 2));
         BinaryNode tree2 = createTree(list2);
-        Assert.assertEquals(1,GraphProblems.diameterOfBinaryTree(tree2));
+        Assert.assertEquals(1, GraphProblems.diameterOfBinaryTree(tree2));
+    }
+
+    @Test
+    public void testIsSubtree() {
+        Assert.assertTrue(GraphProblems.isSubtree(
+                createTree(new LinkedList<>(Arrays.asList(3, 4, 5, 1, 2))),
+                createTree(new LinkedList<>(Arrays.asList(4, 1, 2)))
+        ));
+        Assert.assertFalse(GraphProblems.isSubtree(
+                createTree(new LinkedList<>(Arrays.asList(3, 4, 5, 1, 2, null, null, null, null, 0))),
+                createTree(new LinkedList<>(Arrays.asList(4, 1, 2)))
+        ));
+        Assert.assertTrue(GraphProblems.isSubtree(
+                createTree(new LinkedList<>(Arrays.asList(4, 4, 5, 1, 2))),
+                createTree(new LinkedList<>(Arrays.asList(4, 1, 2)))
+        ));
+    }
+
+    @Test
+    public void testPathSum() {
+        Assert.assertEquals(3, GraphProblems.pathSum(createTree(new LinkedList<>(Arrays.asList(10, 5, -3, 3, 2, null, 11, 3, -2, null, 1))), 8));
     }
 
     // helper functions

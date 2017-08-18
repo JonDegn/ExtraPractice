@@ -240,6 +240,42 @@ public class GraphProblems {
         max = Math.max(max, left + right);
         return Math.max(left, right) + 1;
     }
+
+    //    https://leetcode.com/problems/subtree-of-another-tree/description/
+    //    Given two non-empty binary trees s and t, check whether tree t has exactly the same structure and node values
+    //    with a subtree of s. A subtree of s is a tree consists of a node in s and all of this node's descendants. The
+    //    tree s could also be considered as a subtree of itself.
+    static boolean isSubtree(BinaryNode s, BinaryNode t) {
+        return compareTrees(s, t) || s != null && (isSubtree(s.left, t) || isSubtree(s.right, t));
+    }
+
+    static boolean compareTrees(BinaryNode s, BinaryNode t) {
+        if (s == null && t == null) return true;
+        if (s == null ^ t == null) return false;
+
+        return s.val == t.val && compareTrees(s.left, t.left) && compareTrees(s.right, t.right);
+    }
+
+    //    https://leetcode.com/problems/path-sum-iii/description/
+    //    You are given a binary tree in which each node contains an integer value.
+    //    Find the number of paths that sum to a given value.
+    //    The path does not need to start or end at the root or a leaf, but it must go downwards (traveling only from
+    //    parent nodes to child nodes).
+    static int pathSum(BinaryNode root, int sum) {
+        if (root == null) return 0;
+        return pathSumFrom(root, sum)
+                + pathSum(root.left, sum)
+                + pathSum(root.right, sum);
+    }
+
+    private static int pathSumFrom(BinaryNode node, int sum) {
+        if (node == null) return 0;
+        return (node.val == sum ? 1 : 0)
+                + pathSumFrom(node.left, sum - node.val)
+                + pathSumFrom(node.right, sum - node.val);
+    }
+
+
 }
 
 class BinaryNode {
