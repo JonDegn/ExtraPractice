@@ -181,6 +181,16 @@ public class GraphProblemsTest {
         Assert.assertEquals(3, GraphProblems.pathSum(createTree(new LinkedList<>(Arrays.asList(10, 5, -3, 3, 2, null, 11, 3, -2, null, 1))), 8));
     }
 
+    @Test
+    public void testTrie() {
+        Trie t = new Trie();
+        t.insert("hello");
+        Assert.assertTrue(t.search("hello"));
+        Assert.assertFalse(t.search("hel"));
+        Assert.assertTrue(t.startsWith("h"));
+        Assert.assertTrue(t.startsWith("hel"));
+    }
+
     // helper functions
 
     private BinaryNode createTree(List<Integer> nums) {

@@ -278,6 +278,85 @@ public class GraphProblems {
 
 }
 
+class Trie {
+    TrieNode root;
+
+    /**
+     * Initialize your data structure here.
+     */
+    public Trie() {
+        this.root = new TrieNode();
+    }
+
+    /**
+     * Inserts a word into the trie.
+     */
+    public void insert(String word) {
+        TrieNode node = root;
+        for (int i = 0; i < word.length(); i++) {
+            char currentChar = word.charAt(i);
+            if (!node.containsKey(currentChar)) {
+                node.put(currentChar, new TrieNode());
+            }
+            node = node.get(currentChar);
+        }
+        node.setEnd();
+    }
+
+    /**
+     * Returns if the word is in the trie.
+     */
+    public boolean search(String word) {
+        TrieNode node = searchPrefix(word);
+        return node != null && node.isEnd();
+    }
+
+    /**
+     * Returns if there is any word in the trie that starts with the given prefix.
+     */
+    public boolean startsWith(String prefix) {
+        TrieNode node = searchPrefix(prefix);
+        return node != null;
+    }
+
+    private TrieNode searchPrefix(String word) {
+        TrieNode node = root;
+        for (int i = 0; i < word.length(); i++) {
+            char currentChar = word.charAt(i);
+            if (!node.containsKey(currentChar)) {
+                return null;
+            }
+            node = node.get(currentChar);
+        }
+        return node;
+    }
+
+    class TrieNode {
+        private TrieNode[] chars = new TrieNode[26];
+        private boolean wordEnd = false;
+
+        public boolean containsKey(char c) {
+            return chars[c - 'a'] != null;
+        }
+
+        public TrieNode get(char c) {
+            return chars[c - 'a'];
+        }
+
+        public void put(char c, TrieNode node) {
+            chars[c - 'a'] = node;
+        }
+
+        public void setEnd() {
+            wordEnd = true;
+        }
+
+        public boolean isEnd() {
+            return wordEnd;
+        }
+    }
+}
+
 class BinaryNode {
     BinaryNode left;
     BinaryNode right;
